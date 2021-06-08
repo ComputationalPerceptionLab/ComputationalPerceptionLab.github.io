@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=800pix, initial-scale=1" />
+<style type="text/css">
+table.one {table-layout: fixed}
+div {width:50%}
+.papertitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 30px; font-weight: bold; color: #0066CC; }
+.conferencetitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 20px; font-weight: bold }
+.auther{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.sectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 24px; font-weight: bold; color: #0066CC;}
+.secsectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 21px;  color: #46A3FF;}
+.body{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.Bibtex{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;margin:2px;}
+li{FONT-FAMILY: "Trebuchet MS"; margin:10px 0px;}
+</style>
+<title>Distribution-aware Adaptive Multi-bit Quantization</title>
+</head>
+
+<body>
+<hr align = "center" width = "900" />
+
+<table class="one" cellpadding="0"  cellspacing = "5%" align="center" width="900" id="researcsh">
+
+<tr>
+<td width="100%">
+<p class="papertitle" align="center">Distribution-aware Adaptive Multi-bit Quantization</p>
+<p class="conferencetitle" align="center">CVPR2021</p>
+<p class="auther" align="center">Sijie Zhao, <a href="https://yuetao-nju-ece.github.io/">Tao Yue</a>, <a href="https://xuemei-hu.github.io/">Xuemei Hu</a></p>
+<p class="auther" align="center">sjzhao@smail.nju.edu.cn, yuetao@nju.edu.cn, xuemeihu@nju.edu.cn</p>
+<p class="auther" align="center">School of Electronic Science and Engineering, Nanjing University</p>
+</td>
+</tr>
+</table>
+
+<hr align = "center" width = "900" />
+<table align = "center" width = "900">
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Abstract</p>
+<p class="body" align = "justify">In this paper, we explore the compression of deep neural networks by quantizing the weights and activations into multi-bit binary networks (MBNs). A distribution-aware multi-bit quantization (DMBQ) method that incorporates the distribution prior into the optimization of quantization is proposed. Instead of solving the optimization in each iteration, DMBQ search the optimal quantization scheme over the distribution space beforehand, and select the quantization scheme during training using a fast lookup table based strategy. Based upon DMBQ, we further propose loss-guided bit-width allocation (LBA) to adaptively quantize and even prune the neural network. The first-order Taylor expansion is applied to build a metric for evaluating the loss sensitivity of the quantization of each channel, and automatically adjust the bit-width of weights and activations channel-wisely. We extend our method to image classification tasks and experimental results show that our method not only outperforms state-of-the-art quantized networks in terms of accuracy but also is more efficient in terms of training time compared with state-of-the-art MBNs, even for the extremely low bit width (below 1-bit) quantization cases..</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Method</p>
+<p class="body" align = "justify">We explore the distribution of weights and dedicate to find the optimal quantization scheme of MBQ under the distribution assumption. By minimizing the expected mean square error, a lookup table based strategy is proposed to optimize the quantization schemes with very few computational cost during the iterations. In addition, We model the quantization effect upon the loss of network with Taylor expansion and formulate a metric to evaluate the quantization sensitivity of weights, i.e., the loss variation of the network with the quantization of weights. Since only gradients of quantized weights are required, which could be directly obtained from the backward propagation, the metric can be easily computed, and thus we can adaptively adjust the quantization bit-width of weights and activations in the training process without too much computational load.</p>
+<img src=".\source\DAMBQ_framework.png" alt="Figure 1. An overview of our proposed quantization method." align = "center" width = "720">
+<p class="body" align = "center">Figure 1. An overview of our proposed quantization method.</p>
+<img src=".\source\DAMBQ_quantscheme.png" alt="Figure 2. Comparison between our DMBQ and uniform quantization." align = "center" width = "720">
+<p class="body" align = "center">Figure 2. Comparison between our DMBQ and uniform quantization.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Experiments</p>
+
+<p class="body" align = "center">Table 1. Comparison of different quantization methods on ILSVRC12.</p>
+<img src=".\source\DAMBQ_experiment.png" alt="Table 1. Comparison of different quantization methods on ILSVRC12." align = "center" width="520">
+<br />
+<br />
+<img src=".\source\DMBQ_channel_bitwidth.png" alt="Figure 3. The statistical characteristics of channel-wise quantization models." align = "center" width="920">
+<p class="body" align = "center">Figure 3. The statistical characteristics of channel-wise quantization models.</p>
+<br />
+
+</td>
+</tr>
+
+
+<tr  width = "900">
+<td  width = "900">
+<br />
+<p class="sectitle" align = "left">More Details</p>
+
+<ul>
+	<li>File</li>
+		<ul>
+			<li><a href=".\source\Distribution-aware Adaptive Multi-bit Quantization.pdf">Paper</a></li>
+			<li><a href=".\source\DAMBQ_supp.pdf">Supplemental material</a></li>
+		</ul>
+	<br />
+	<li>Presentation</li>
+		<ul>
+			<li><a href=".\source\DAMBQ_poster.pdf">Poster</a></li>
+			<li><a href=".\source\DAMBQ_video.mp4">Video</a></li>
+		</ul>
+</ul>
+
+
+<tr align = "left" width = "900">
+<td align = "left" width = "900">
+<br />
+<p class="sectitle" align = "left">Bibtex</p>
+<p class="Bibtex">@InProceedings{zhao2021distribution,</p>
+<p class="Bibtex">author = {Sijie Zhao and Tao Yue and Xuemei Hu},</p>
+<p class="Bibtex">title = {Distribution-aware Adaptive Multi-bit Quantization},</p>
+<p class="Bibtex">booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},</p>
+<p class="Bibtex">month = {June},</p>
+<p class="Bibtex">year = {2021}</p>
+<p class="Bibtex">}</p>
+<br />
+<br />
+<br />
+<br />
+</td>
+</tr>
+
+
+
+
+
+</table>
+
+
+</body>
+
+</html>

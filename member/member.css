@@ -1,0 +1,68 @@
+.research_modified {
+    position:fixed;
+    bottom:0;
+    font-family:'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+.member_body {
+    height: auto;
+}
+
+td div {
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+}
+
+td div img {
+    height: 100px;
+    width: 70px;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 2px;
+}
+
+.member_title {
+	text-align: center;
+	color: #999;
+	font-family: 'Times';
+	font-style:normal;
+}
+
+.table_div {
+	height: 100px;
+	width: 500px;
+    display: flex;
+	text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+.table_div a {
+    text-decoration: none;
+    color: black;
+}
+
+.table_div a:hover {
+    color: red;
+}
+
+.member_info {
+    text-align:left;
+    position: absolute;
+    bottom: 2px;
+    margin-left: 5px;
+}
+
+.faculty a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 22px;
+}
+
+.faculty li {
+    list-style: none;
+}

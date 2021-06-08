@@ -1,0 +1,47 @@
+.research_modified {
+    position:fixed;
+    bottom:0;
+    font-family:Cambria, 'Times New Roman', Times, serif;
+}
+
+.research_body {
+    height: auto;
+}
+
+td div {
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+}
+
+td div img {
+    height: 60%;
+    width: 60%;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.research_title {
+	text-align: center;
+	color: #999;
+	font-family: 'Times';
+	font-style:normal;
+}
+
+.table_div {
+	height: 600px;
+	width: 600px;
+	text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+.table_div a {
+    text-decoration: none;
+    color: black;
+}
+
+.table_div a:hover {
+    color: red;
+}
