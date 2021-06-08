@@ -5,7 +5,9 @@
 }
 
 .research_body {
-    height: auto;
+	width: 80%;
+	height:auto;
+	margin: 0px auto;
 }
 
 td div {
