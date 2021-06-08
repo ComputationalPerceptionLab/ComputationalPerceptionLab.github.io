@@ -6,7 +6,9 @@
 }
 
 .member_body {
-    height: auto;
+	width: 1200PX;
+	height:auto;
+	margin: 0px auto;
 }
 
 td div {
