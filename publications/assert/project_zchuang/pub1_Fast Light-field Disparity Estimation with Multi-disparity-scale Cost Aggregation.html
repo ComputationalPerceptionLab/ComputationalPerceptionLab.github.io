@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=800pix, initial-scale=1" />
+<style type="text/css">
+table.one {table-layout: fixed}
+div {width:50%}
+.papertitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 30px; font-weight: bold; color: #0066CC; }
+.conferencetitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 20px; font-weight: bold }
+.auther{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.sectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 24px; font-weight: bold; color: #0066CC;}
+.secsectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 21px;  color: #46A3FF;}
+.body{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.Bibtex{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;margin:2px;}
+li{FONT-FAMILY: "Trebuchet MS"; margin:10px 0px;}
+</style>
+<title>Fast Light-field Disparity Estimation with Multi-disparity-scale Cost Aggregation</title>
+</head>
+
+<body>
+<hr align = "center" width = "900" />
+
+<table class="one" cellpadding="0"  cellspacing = "5%" align="center" width="900" id="researcsh">
+
+<tr>
+<td width="100%">
+<p class="papertitle" align="center">Fast Light-field Disparity Estimation with Multi-disparity-scale Cost Aggregation</p>
+<p class="conferencetitle" align="center">ICCV 2021</p>
+<p class="auther" align="center">Zhicong Huang, <a href="https://xuemei-hu.github.io/">Xuemei Hu</a>, Zhou Xue, Weizhu Xu, <a href="https://yuetao-nju-ece.github.io/">Tao Yue</a></p>
+<p class="auther" align="center"> zcong17huang@smail.nju.edu.cn, weizhuxunju@smail.nju.edu.cn, xuezhou@bytedance.com, yuetao@nju.edu.cn, xuemeihu@nju.edu.cn</p>
+<p class="auther" align="center">School of Electronic Science and Engineering, Nanjing University</p>
+</td>
+</tr>
+</table>
+
+<hr align = "center" width = "900" />
+<table align = "center" width = "900">
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Abstract</p>
+<p class="body" align = "justify">Light field images contain both angular and spatial information of captured light rays. The rich information of light fields enables straightforward disparity recovery capability, but demands high computational cost as well. In this paper, we design a lightweight disparity estimation model with physical-based multi-disparity-scale cost volume aggregation for fast disparity estimation. By introducing a sub-network of edge guidance, we significantly improve the recovery of geometric details near edges and improve the overall performance. We test the proposed model extensively on both synthetic and real-captured datasets, which provide both densely and sparsely sampled light fields. Finally, we significantly reduce computation cost and GPU memory consumption, while achieve comparable performance with state-of-the-art disparity estimation methods for light fields.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Method</p>
+<p class="body" align = "justify">We propose FastLFnet, a fast light-field disparity estimation network which can not only produce accurate estimations, but also significantly speed up inference. We design an <b>edge guidance sub-network</b> to guide the disparity estimation with edge cues for better performance on challenging regions. Specifically, we propose to extract edge features with the <b>edge feature extraction (EFE) module</b> from the center view image and the extracted edge feature maps are then integrated into a <b>pixel-wise edge feature fusion (EFF)</b>. To aggregate the cost volume from different views, we propose a <b>layer-by-layer multi-disparity-scale cost aggregation architecture (MCA)</b> to integrate pyramid cost volumes for fast and high performance cost volume regularization. The method achieves competitive performance with the state-of-the-art methods with much faster computing speed and lower GPU memory comsumption.</p>
+<img src=".\source\net.png" alt="Figure 1. Overview of the proposed FastLFnet. The overall FastLFnet is at the top right of the figure." align = "center" width = "920">
+<p class="body" align = "center">Figure 1. Overview of the proposed FastLFnet. The overall FastLFnet is at the top right of the figure.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Experiments</p>
+
+<img src=".\source\fig1.png" alt="Figure 1. Comparison in performance and efficiency of light field disparity estimation algorithms on 4D light field dataset." align = "center" width="520">
+<p class="body" align = "center">Figure 1. Comparison in performance and efficiency of light field disparity estimation algorithms on 4D light field dataset.</p>
+<br />
+
+<img src=".\source\tab1.png" alt="Table 1. Quantitative comparison (i.e., MSE x100) with other state-of-the-art methods on the 4D Light Field Dataset." align = "center" width="720">
+<p class="body" align = "center">Table 1. Quantitative comparison (i.e., MSE x100) with other state-of-the-art methods on the 4D Light Field Dataset.</p>
+<br />
+
+<img src=".\source\fig2.png" alt="Figure 2. Qualitative results of our method and other compared methods on 4D light field dataset." align = "center" width="920">
+<img src=".\source\fig3.png" alt="Figure 2. Qualitative results of our method and other compared methods on 4D light field dataset." align = "center" width="920">
+<p class="body" align = "center">Figure 2. Qualitative results of our method and other compared methods on 4D light field dataset.</p>
+<br />
+
+<img src=".\source\fig4.png" alt="Figure 3. Error maps of Discon BadPix for the scene Sideboard on 4D light field dataset." align = "center" width="620">
+<p class="body" align = "center">Figure 3. Error maps of Discon BadPix for the scene Sideboard on 4D light field dataset.</p>
+<br />
+
+<img src=".\source\tab2.png" alt="Table 2. Results of the performance comparison on the Sparse Light Field Dataset in terms of MSE." align = "center" width="620">
+<p class="body" align = "center">Table 2. Results of the performance comparison on the Sparse Light Field Dataset in terms of MSE.</p>
+<br />
+
+</td>
+</tr>
+
+
+<tr  width = "900">
+<td  width = "900">
+<br />
+<p class="sectitle" align = "left">More Details</p>
+
+<ul>
+	<li>File</li>
+		<ul>
+			<li><a href=".\source\8548.pdf">Paper</a></li>
+			<li><a href=".\source\8548-supp.pdf">Supplemental material</a></li>
+		</ul>
+
+	<br />
+	<li>4D light field dataset (<a href="https://pan.baidu.com/s/1eoKImp_cqyIX8bDJXe6ftA">Baidu Yun</a>, Key: YMx3)</li>
+</ul>
+
+
+<tr align = "left" width = "900">
+<td align = "left" width = "900">
+<br />
+<p class="sectitle" align = "left">Bibtex</p>
+<p class="Bibtex">@InProceedings{huang2021fast,</p>
+<p class="Bibtex">author = {Huang, Zhicong and Hu, Xuemei and Xue, Zhou and Xu Weizhu  and Yue, Tao},</p>
+<p class="Bibtex">title = {Fast Light-field Disparity Estimation with Multi-disparity-scale Cost Aggregation},</p>
+<p class="Bibtex">booktitle = {The IEEE International Conference on Computer Vision (ICCV)},</p>
+<p class="Bibtex">month = {June},</p>
+<p class="Bibtex">year = {2021}</p>
+<p class="Bibtex">}</p>
+<br />
+<br />
+<br />
+<br />
+</td>
+</tr>
+
+
+
+
+
+</table>
+
+
+</body>
+
+</html>
