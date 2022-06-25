@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=800pix, initial-scale=1" />
+<style type="text/css">
+table.one {table-layout: fixed}
+div {width:50%}
+.papertitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 30px; font-weight: bold; color: #0066CC; }
+.conferencetitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 20px; font-weight: bold }
+.auther{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.sectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 24px; font-weight: bold; color: #0066CC;}
+.secsectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 21px;  color: #46A3FF;}
+.body{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.Bibtex{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;margin:2px;}
+li{FONT-FAMILY: "Trebuchet MS"; margin:10px 0px;}
+</style>
+<title>Fisher Information Guidance for Learned Time-of-Flight Imaging</title>
+</head>
+
+<body>
+<hr align = "center" width = "900" />
+
+<table class="one" cellpadding="0"  cellspacing = "5%" align="center" width="900" id="researcsh">
+
+<tr>
+<td width="100%">
+<p class="papertitle" align="center">Fisher Information Guidance for Learned Time-of-Flight Imaging</p>
+<p class="conferencetitle" align="center">CVPR 2022 (Oral)</p>
+<p class="auther" align="center">Jiaqu Li, <a href="https://computationalperceptionlab.github.io/member/assert/Yuetao/index.html">Tao Yue</a>, Sijie Zhao, <a href="https://computationalperceptionlab.github.io/member/assert/Huxuemei/index.html">Xuemei Hu</a></p>
+<p class="auther" align="center"> jqli@smail.nju.edu.cn，yuetao@nju.edu.cn, sjzhao@smail.nju.edu.cn, xuemeihu@nju.edu.cn</p>
+<p class="auther" align="center">School of Electronic Science and Engineering, Nanjing University</p>
+</td>
+</tr>
+</table>
+
+<hr align = "center" width = "900" />
+<table align = "center" width = "900">
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Abstract</p>
+<p class="body" align = "justify">Indirect Time-of-Flight (ToF) imaging is widely applied in practice for its superiorities on cost and spatial resolution. However, lower signal-to-noise ratio (SNR) of measurement leads to larger error in ToF imaging, especially for imaging scenes with strong ambient light or long distance. In this paper, we propose a Fisher-information guided framework to jointly optimize the coding functions (light modulation and sensor demodulation functions) and the reconstruction network of iToF imaging, with the supervision of the proposed discriminative fisher loss. By introducing the differentiable modeling of physical imaging process considering various real factors and constraints, e.g., light-falloff with distance, physical implementability of coding functions, etc., followed by a dual-branch depth reconstruction neural network, the proposed method could learn the optimal iToF imaging system in an end-to-end manner. The effectiveness of the proposed method is extensively verified with both simulations and prototype experiments.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Method</p>
+<p class="body" align = "justify">We propose <b>an information theory guided framework to jointly optimize the coding functions and the reconstruction neural network of iToF imaging</b> in an end-to-end manner, with the proposed discriminative fisher loss. Specifically, we formulate the iToF imaging process with <b>a differential physical imaging model with learnable coding functions, taking the physical implementation constraints into consideration</b>, to learn the physical implementable modulation and demodulation functions. Followed by the imaging model, <b>a dual branch depth reconstruction neural network</b> is proposed. We constraint the coding functions with the proposed <b>discriminative fisher loss</b> to maximize the information about depth that could be encoded with the coding functions of iToF imaging. We build <b>a prototype iToF imaging system</b> and implement the noise tolerant iToF imaging with the optimized coding functions and the reconstruction network. Finally, we verify the <b>SOTA performance</b> of the proposed iToF imaging method, both in simulation and in real captured data.</p>
+<img src=".\source\overview.png" alt="Figure 1. Overview of the proposed fisher information guided learned iToF imaging framework." align = "center" width = "650" >
+<p class="body" align = "center">Figure 1. Overview of the proposed fisher information guided learned iToF imaging framework.</p>
+<img src=".\source\network_new.png" alt="Figure 2. Dual-branch depth reconstruction network." align = "center" width = "650" >
+<p class="body" align = "center">Figure 2. Dual-branch depth reconstruction network.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Experiments</p>
+
+
+<p class="secsectitle" align = "left">Synthetic Assessment</p>
+<img src=".\source\table.png" alt="Table 1. Quantitative comparison in terms of the overall performance, coding functions, and reconstruction methods with respect to three different noise settings from the 2nd to 4th column." align = "center" width="450" height="400">
+<p class="body" align = "center">Table 1. Quantitative comparison in terms of the overall performance, coding functions, and reconstruction methods with respect to three different noise settings from the 2nd to 4th column.</p>
+<br />
+
+
+<img src=".\source\syn1.png" alt="Figure 3. Overall comparisons with other iToF methods in three different noisy scenarios on NYU-V2 dataset." align = "center" width="720" height="500">
+<p class="body" align = "center">Figure 3. Overall comparisons with other iToF methods in three different noisy scenarios on NYU-V2 dataset.</p>
+<br />
+
+
+<img src=".\source\syn2.png" alt="Figure 4. Depth reconstruction results on (a)4D Light Field dataset and (b)SUN RGB-D dataset." align = "center" width="720">
+<p class="body" align = "center">Figure 4. Depth reconstruction results on (a)4D Light Field dataset and (b)SUN RGB-D dataset.</p>
+<br />
+
+
+<img src=".\source\syn3.png" alt="Figure 5.Comparisons with other coding functions in three different noisy scenarios." align = "center" width="920" height="530">  
+<p class="body" align = "center">Figure 5. Comparisons with other coding functions in three different noisy scenarios.</p>
+<br />
+
+
+<img src=".\source\syn4.png" alt="Figure 6. Comparisons with other depth reconstruction networks in three different noisy scenarios." align = "center" width="550" height="490">
+<p class="body" align = "center">Figure 6. Comparisons with other depth reconstruction networks in three different noisy scenarios.</p>
+<br />
+
+<p class="secsectitle" align = "left">Physical Experiment</p>
+
+
+<img src=".\source\system.png" alt="Figure 7. Experimental system, (a)-(c) top, front, side views." align = "center" width="720">
+<p class="body" align = "center">Figure 7. Experimental system, (a)-(c) top, front, side views.</p>
+<br />
+
+<img src=".\source\hw1.png" alt="Figure 8. Performance comparisons in physical experiments." align = "center" width="720">
+<p class="body" align = "center">Figure 8. Performance comparisons in physical experiments.</p>
+<br />
+
+
+
+
+
+
+
+</td>
+</tr>
+
+
+<tr  width = "900">
+<td  width = "900">
+<br />
+<p class="sectitle" align = "left">More Details</p>
+
+<ul>
+	<li>File</li>
+		<ul>
+			<li><a href=".\source\08018.pdf">Paper</a></li>
+			<li><a href=".\source\08018_supp.pdf">Supplemental material</a></li>
+		</ul>
+	<br />
+	<li>Presentation</li>
+		<ul>
+			<li><a href=".\source\08018_poster.pdf">Poster</a></li>
+			<li><a href=".\source\08018_overview.pdf">Overview</a></li>
+			<li><a href=".\source\08018_video.mp4">Video</a></li>
+		</ul>
+	<br />
+	<li>Available source code: <a href="">GitHub</a></li>
+</ul>
+
+
+<tr align = "left" width = "900">
+<td align = "left" width = "900">
+<br />
+<p class="sectitle" align = "left">Bibtex</p>
+<p class="Bibtex">@InProceedings{Li_2022_CVPR,</p>
+<p class="Bibtex">title = {Fisher Information Guidance for Learned Time-of-Flight Imaging},</p>
+<p class="Bibtex">author = {Li, Jiaqu and Yue, Tao and Zhao,Sijie and Hu, Xuemei},</p>
+<p class="Bibtex">booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},</p>
+<p class="Bibtex">month = {June},</p>
+<p class="Bibtex">year = {2022},</p>
+<p class="Bibtex">pages={16334-16343}</p>
+<p class="Bibtex">}</p>
+<br />
+<br />
+<br />
+<br />
+</td>
+</tr>
+
+
+
+
+
+</table>
+
+
+</body>
+
+</html>
