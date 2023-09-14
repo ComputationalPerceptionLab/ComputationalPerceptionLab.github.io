@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=800pix, initial-scale=1" />
+<style type="text/css">
+table.one {table-layout: fixed}
+div {width:50%}
+.papertitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 30px; font-weight: bold; color: #0066CC; }
+.conferencetitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 20px; font-weight: bold }
+.auther{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.sectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 24px; font-weight: bold; color: #0066CC;}
+.secsectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 21px;  color: #46A3FF;}
+.body{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.Bibtex{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;margin:2px;}
+li{FONT-FAMILY: "Trebuchet MS"; margin:10px 0px;}
+</style>
+<title>Trilobite-inspired neural nanophotonic light-field camera with extreme depth-of-field</title>
+</head>
+
+<body>
+<hr align = "center" width = "900" />
+<table class="one" cellpadding="0"  cellspacing = "5%" align="center" width="900" id="researcsh">
+	<tr>
+		<td width="100%">
+			<p class="papertitle" align="center">Trilobite-inspired neural nanophotonic light-field camera with extreme depth-of-field</p>
+			<p class="conferencetitle" align="center">Nature communication 2022</p>
+			<p class="auther" align="center">Qingbin Fan*, <a href="https://github.com/XuWeizhu">Weizhu Xu*</a>, <a href="https://computationalperceptionlab.github.io/member/assert/Huxuemei/index.html">Xuemei Hu*</a>, Wenqi Zhu*, 
+				<a href="https://computationalperceptionlab.github.io/member/assert/Yuetao/index.html">Tao Yue</a>, Cheng Zhang, Feng Yan, Lu Chen, Henri J. Lezec, Yanqing Lu, Amit Agrawal, Ting Xu</p>
+			<p class="auther" align="center"> weizhuxunju@smail.nju.edu.cn, xuemeihu@nju.edu.cn, yuetao@nju.edu.cn, xuting@nju.edu.cn</p>
+			<p align="center"><img src=".\source\1.png" align = "center" width = "600" ></p>
+			<!--
+		<p class="auther" align="center">National Laboratory of Solid-StateMicrostructures and Collaborative Innovation Center of AdvancedMicrostructures, Nanjing University</p>
+		<p class="auther" align="center">College of Engineering and Applied Sciences and Jiangsu Key Laboratory of Artificial Functional Materials, Nanjing University</p>
+		<p class="auther" align="center">School of Electronic Science and Engineering, Nanjing University</p>
+		<p class="auther" align="center">Physical Measurement Laboratory, National Institute of Standards and Technology</p>
+		<p class="auther" align="center">Maryland NanoCenter, University of Maryland</p>
+		<p class="auther" align="center">School of Optical and Electronic Information, Wuhan National Laboratory for Optoelectronics, Huazhong University of Science and Technology</p>
+		<p class="auther" align="center">These authors* contributed equally</p>
+		-->
+		</td>
+	</tr>
+</table>
+
+<hr align = "center" width = "900" />
+<table align = "center" width = "900">
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Abstract</p>
+<p class="body" align = "justify">A unique bifocal compound eye visual system found in the now extinct trilobite, Dalmanitina
+	socialis, may enable them to be sensitive to the light-field information and simultaneously
+	perceive both close and distant objects in the environment. Here, inspired by the optical
+	structure of their eyes, we demonstrate a nanophotonic light-field camera incorporating a
+	spin-multiplexed bifocal metalens array capable of capturing high-resolution light-field images
+	over a record depth-of-field ranging from centimeter to kilometer scale, simultaneously
+	enabling macro and telephoto modes in a snapshot imaging. By leveraging a multi-scale
+	convolutional neural network-based reconstruction algorithm, optical aberrations induced by
+	the metalens are eliminated, thereby significantly relaxing the design and performance limitations
+	on metasurface optics. The elegant integration of nanophotonic technology with
+	computational photography achieved here is expected to aid development of future highperformance
+	imaging systems.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Method</p>
+<p class="secsectitle" align = "left">Schematic diagram</p>
+<p class="body" align = "justify"> Schematic diagram of the working principle of the system with metalens array achieving spin-dependent bifocal light-field imaging. 
+	The proposed method modulates circular polarization component of incident light, focuses scenes at different depths on the same image plane 
+	and utilizes deep learning based reconstruction algorithms to remove aberrations. 
+	Either the LCP component of close object or the RCP component of distant object could be focused well on the identical imaging plane. 
+	The nominal distance between the primary lens and metalens array is L = 47.5 mm. The nominal distance between the imaging plane and metalens array is l = 0.83 mm. 
+	The focal length and aperture size of the primary lens is F = 50mm and D = 6 mm, respectively.</p>
+<img src=".\source\2.png" align = "center" width = "550" >
+<!-- <p class="body" align = "center">Figure 1. Schematic diagram of the working principle of the system with metalens array achieving spin-dependent bifocal light-field imaging.</p> -->
+
+<p class="secsectitle" align = "left">Network architecture:</p>
+<p class="body" align = "justify"> Architecture of the distortion removal convolutional neural network. The network is
+	composed of 3 branches in different scales. Each branch of network is composed of residual blocks,
+	convolutional blocks, skip connections. The feature information of different scales are elegantly fused
+	together with convolutions and concatenations among different network branches. </p>
+<img src=".\source\3.png" align = "center" width = "900" >
+
+<p class="secsectitle" align = "left">Dataset</p>
+<p class="body" align = "justify">PSF capture and training-data generation.
+	In practice, we fix the camera and place a point light source at different positions from 0.03m to 5m to capture the PSFs and calibrate the PSF at infinity with a collimator.
+	The ground truth sharp images are generated from COCO dataset by randomly sampling 10,000 ground truth images. 
+	We convolve the ground truth images with the calibrated PSFs to generate the distorted images and then cut them randomly into patches with pixel size of 224 × 224 to train the neural network.
+ </p>
+<img src=".\source\4.png" align = "center" width = "750" >
+
+<p class="secsectitle" align = "left">Rendering method</p>
+<p class="body" align = "justify">Pipeline illustration of the rendering method. Note that here we take a 3 × 3 sub-images
+	as example. Firstly, the center patch of each sub-image is extracted through cropping. Then the extracted
+	patches are rescaled depending on the dominant disparity of each sub-image. Thirdly, the rescaled
+	patches are weighted with the confidence maps calculated with the disparity map. Finally, the weighted
+	patches are tiled together into a rendered center-view image.
+ </p>
+<img src=".\source\5.png" align = "center" width = "900" >
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Experiments</p>
+<p class="secsectitle" align = "left">Outdoor scenes</p>
+<p class="body" align = "justify">The overview of the imaging scene of Fig. 6 (in the main text). The scene is composed of
+	objects at different distances from the aperture of the primary lens, i.e., (a) 3 cm ‘NJU’ letters, (b) 0.35
+	m ruler, (c) 2 m color plate, (d) 10 m Nanjing University Logo, and (e) the outdoor scene.
+ </p>
+<img src=".\source\6.png" align = "center" width = "800" ><br />
+
+<p class="secsectitle" align = "left">Results</p>
+<p class="body" align = "justify">We select a scene covering an enormous depth from
+	3 cm to 1.7 km. A piece of glass patterned with opaque characters
+	“NJU” is placed at a depth of 3 cm away from the aperture of the
+	primary lens, which is used as the nearest object. A ruler, a color
+	plate, and a university logo are placed at the depth of 0.35 m, 2m,
+	and 10 m, respectively. The distance of white Chinese characters
+	on the rooftop and dormitory building are approximately 360m
+	and 480 m, respectively. The distance of the farthest highrise is
+	approximately 1.7 km. (a, b) Captured light-field subimages of the whole scene under natural light (a)
+	before and (b) after aberration correction. (c, d) Zoomed-in subimages of different objects corresponding to the marked ones shown in (a, b), respectively.
+	(e) Aberration-corrected all-in-focus image after rendering. The reconstructed NJU characters have been reasonably shifted and scaled for easy viewing.
+ </p>
+<img src=".\source\7.png" align = "center" width = "800" >
+
+<p class="secsectitle" align = "left">Comparison</p>
+<p class="body" align = "justify">Captured images after removing the metalens array from the light-field imaging system. 
+	The focusing plane is changed through adjusting the sensor position. 
+	Since the ‘NJU’ letters on the glass plate are right at the front-end of the primary lens, it is impossible to focus at that plane through changing the position of the sensor. 
+	As we can see from the graph, with the same f-number, it would take at least four shots with the main lens alone to clearly capture the scene within the same depth-of-field.
+ </p>
+<img src=".\source\8.png" align = "center" width = "800" >
+
+</td>
+</tr>
+
+
+<tr  width = "900">
+<td  width = "900">
+<br />
+<p class="sectitle" align = "left">More Details</p>
+
+<ul>
+	<li>File</li>
+		<ul>
+			<li><a href="https://www.nature.com/articles/s41467-022-29568-y">Paper</a></li>
+			<li><a href="https://www.nature.com/articles/s41467-022-29568-y">Supplemental material</a></li>
+			<li><a href="https://github.com/XuWeizhu/DOF">Code</a></li>
+		</ul>
+	<br />
+	<!--<li>Available source code: <a href="">Coming Soon.</a></li> -->
+</ul>
+
+
+<tr align = "left" width = "900">
+<td align = "left" width = "900">
+<br />
+<p class="sectitle" align = "left">Bibtex</p>
+<p class="Bibtex">@article{Fan2022TrilobiteinspiredNN,</p>
+<p class="Bibtex">title={Trilobite-inspired neural nanophotonic light-field camera with extreme depth-of-field},</p>
+<p class="Bibtex">author={Qingbin Fan and Weizhu Xu and Xue-mei Hu and Wenqi Zhu and Tao Yue and Cheng Zhang and Feng Yan and Lu Chen and Henri J. Lezec and Yan-qing Lu and Amit Agrawal and Ting Xu},</p>
+<p class="Bibtex">journal={Nature Communications},</p>
+<p class="Bibtex">year={2022},</p>
+<p class="Bibtex">volume={13},</p>
+<p class="Bibtex">pages={16334-16343},</p>
+<p class="Bibtex">url={https://www.nature.com/articles/s41467-022-29568-y}</p>
+<p class="Bibtex">}</p>
+<br />
+</td>
+</tr>
+
+</table>
+</body>
+</html>

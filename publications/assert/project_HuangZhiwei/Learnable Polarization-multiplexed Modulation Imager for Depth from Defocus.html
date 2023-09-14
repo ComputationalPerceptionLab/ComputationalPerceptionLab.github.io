@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=800pix, initial-scale=1" />
+<style type="text/css">
+table.one {table-layout: fixed}
+div {width:50%}
+.papertitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 30px; font-weight: bold; color: #0066CC; }
+.conferencetitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 20px; font-weight: bold }
+.auther{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.sectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 24px; font-weight: bold; color: #0066CC;}
+.secsectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 21px;  color: #46A3FF;}
+.body{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.Bibtex{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;margin:2px;}
+li{FONT-FAMILY: "Trebuchet MS"; margin:10px 0px;}
+</style>
+<title>Learnable Polarization-multiplexed Modulation Imager for Depth from Defocus</title>
+</head>
+
+<body>
+<hr align = "center" width = "900" />
+
+<table class="one" cellpadding="0"  cellspacing = "5%" align="center" width="900" id="researcsh">
+
+<tr>
+<td width="100%">
+<p class="papertitle" align="center">Learnable Polarization-multiplexed Modulation Imager for Depth from Defocus</p>
+<p class="conferencetitle" align="center">ICCP 2023</p>
+<p class="auther" align="center">Zhiwei Huang, Mingyou Dai, <a href="https://computationalperceptionlab.github.io/member/assert/Yuetao/index.html">Tao Yue</a>, <a href="https://computationalperceptionlab.github.io/member/assert/Huxuemei/index.html">Xuemei Hu</a></p>
+<p class="auther" align="center"> zhiweihuang@smail.nju.edu.cn, MingyouDai@smail.nju.edu.cn, yuetao@nju.edu.cn, xuemeihu@nju.edu.cn</p>
+<p class="auther" align="center">School of Electronic Science and Engineering, Nanjing University</p>
+</td>
+</tr>
+</table>
+
+<hr align = "center" width = "900" />
+<table align = "center" width = "900">
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Abstract</p>
+<p class="body" align = "justify">Estimating depth from a single snapshot image with defocus information is still a tricky problem for the ill-posedness introduced by the limited depth cues implied in the defocus images. This paper proposes a Polarization-multiplexed Modulation Imager (PoMI) to fully utilize the multiplexed polarization channels for capturing more depth cues with a single snapshot image. The polarization-dependent modulator, i.e., Liquid Crystal Spatial Light Modulator (LC-SLM), is applied to modulate the depth information into polarization channels. A differentiable polarization-dependent modulation camera model is proposed, combined with the Polarization-Driven Attention Network, to enable the joint system optimization by end-to-end training. Extensive tests have been applied to the synthetic datasets to verify the effectiveness of the proposed method. A system prototype is built to conduct real experiments demonstrating the feasibility of the proposed method for natural scenes.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Method</p>
+<p class="body" align = "justify">We propose <b>a Polarization-multiplexed Modulation Imager (PoMI) system</b> for depth imaging of natural scene, which multiplex the depth information into different polarization states with a single polarization-dependent modulator. <b>A differentiable polarization-dependent image formation model</b> is proposed with an end-to-end optimization framework, enabling <b>the joint optimization of the modulation mask and the reconstruction neural network</b> for depth estimation. To extract informative polarization features for depth estimation, <b>a Polarization-driven Attentional Deep Network (PADNet)</b> is proposed to process the coded polarization images. The simulation experimental results on two datasets (FlyingThings3D, NYU Depth v2) show that our method could <b>outperform the state-of-the-art DfD approaches.</b> Finally, we build <b>a prototype imaging system</b> and load the LC-SLM with the optimized modulation mask to conduct real experiments, demonstrating the effectiveness of the proposed method for natural scenes.</p>
+<img src=".\source\System overview.png" alt="Figure 1. Schematics for the proposed Polarization-multiplexed Modulation Imager (PoMI) system." align = "center" width = "660" >
+<p class="body" align = "center">Figure 1. Schematics for the proposed Polarization-multiplexed Modulation Imager (PoMI) system.</p>
+<img src=".\source\Pipeline.png" alt="Figure 2. Overview of the proposed end-to-end learnable PoMI system." align = "center" width = "650" >
+<p class="body" align = "center">Figure 2. Overview of the proposed end-to-end learnable PoMI system.</p>
+<img src=".\source\Network.png" alt="Figure 3. Polarization-driven Attentional Deep Network." align = "center" width = "660" >
+<p class="body" align = "center">Figure 3. Polarization-driven Attentional Deep Network.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Experiments</p>
+
+
+<p class="secsectitle" align = "left">Simulation Experiment</p>
+<img src=".\source\Table_FlyingThings3D.png" alt="Table 1. Quantitative comparison of performances on the FlyingThings3D dataset. Best results are in bold, second best are underlined." align = "center" width="600">
+<p class="body" align = "center">Table 1. Quantitative comparison of performances on the FlyingThings3D dataset. <br />Best results are in bold, second best are underlined.</p>
+<br />
+
+<img src=".\source\Table_NYU.png" alt="Table 2. Quantitative comparison of performances on the NYU Depth v2 dataset. Best results are in bold, second best are underlined." align = "center" width="600">
+<p class="body" align = "center">Table 2. Quantitative comparison of performances on the NYU Depth v2 dataset. <br />Best results are in bold, second best are underlined.</p>
+<br />
+
+<img src=".\source\Table_ablation.png" alt="Table 3. Quantitative comparison for different modulations with PADNet on FlyingThing3D dataset. Best results are in bold, second best are underlined." align = "center" width="600">
+<p class="body" align = "center">Table 3. Quantitative comparison for different modulations with PADNet on FlyingThing3D dataset. <br />Best results are in bold, second best are underlined.</p>
+<br />
+
+
+<img src=".\source\Visulization_FlyingThings3D.png" alt="Figure 4. Qualitative comparison of our proposed method on the FlyingThings3D dataset against prior works. RMSE of the depth map are shown on the top right." align = "center" width="650">
+<p class="body" align = "center">Figure 4. Qualitative comparison of our proposed method on the FlyingThings3D dataset against prior works. <br />RMSE of the depth map are shown on the top right.</p>
+<br />
+
+
+<img src=".\source\Visulization_NYU.png" alt="Figure 5. Qualitative comparison of our proposed method on the NYU Depth v2 dataset against prior works." align = "center" width="650">
+<p class="body" align = "center">Figure 5. Qualitative comparison of our proposed method on the NYU Depth v2 dataset against prior works.</p>
+<br />
+
+<img src=".\source\Visulization_for_ablation.png" alt="Figure 6. Qualitative comparison of our proposed modulation against other modulation schemes. RMSE of the depth map are shown on the top left." align = "center" width="650">
+<p class="body" align = "center">Figure 6. Qualitative comparison of our proposed modulation against other modulation schemes. <br />RMSE of the depth map are shown on the top left.</p>
+<br />
+
+<img src=".\source\Comparison_channels_over_noise_levels.png" alt="Figure 7. Quantitative comparison of four-channel and two-channel system at different noise levels." align = "center" width="650">
+<p class="body" align = "center">Figure 7. Quantitative comparison of four-channel and two-channel system at different noise levels.</p>
+<br />
+
+<p class="secsectitle" align = "left">Physical Experiment</p>
+
+
+<img src=".\source\System prototype.png" alt="Figure 8. The prototype and corresponding optical diagram of the proposed PoMI system." align = "center" width="630">
+<p class="body" align = "center">Figure 8. The prototype and corresponding optical diagram of the proposed PoMI system.</p>
+<br />
+
+<img src=".\source\Visulization_natural_scenes.png" alt="Figure 9. Experimental results on real capture data." align = "center" width="650">
+<p class="body" align = "center">Figure 9. Experimental results on real capture data.</p>
+<br />
+
+<img src=".\source\quantitative_analysis.png" alt="Figure 10. Quantitative analysis of physical experiments by our system prototype." align = "center" width="650">
+<p class="body" align = "center">Figure 10. Quantitative analysis of physical experiments by our system prototype.</p>
+<br />
+
+
+
+
+
+</td>
+</tr>
+
+
+<tr  width = "900">
+<td  width = "900">
+<br />
+<p class="sectitle" align = "left">More Details</p>
+
+<ul>
+	<li>File</li>
+		<ul>
+			<li><a href=".\source\Learnable Polarization-multiplexed Modulation.pdf">Paper</a></li>
+		</ul>
+	<br />
+	<li>Presentation</li>
+		<ul>
+			<li><a href=".\source\Presentation_overview.pdf">Overview</a></li>
+		</ul>
+	<br />
+	<!--<li>Available source code: <a href="">Coming Soon.</a></li> -->
+</ul>
+
+<!-- <tr align = "left" width = "900">
+<td align = "left" width = "900">
+<br />
+<p class="sectitle" align = "left">Bibtex</p>
+<p class="Bibtex">@InProceedings{Li_2022_CVPR,</p>
+<p class="Bibtex">title = {Fisher Information Guidance for Learned Time-of-Flight Imaging},</p>
+<p class="Bibtex">author = {Li, Jiaqu and Yue, Tao and Zhao,Sijie and Hu, Xuemei},</p>
+<p class="Bibtex">booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},</p>
+<p class="Bibtex">month = {June},</p>
+<p class="Bibtex">year = {2022},</p>
+<p class="Bibtex">pages={16334-16343}</p>
+<p class="Bibtex">}</p>
+<br />
+<br />
+<br />
+<br />
+</td>
+</tr> -->
+
+
+</table>
+
+
+</body>
+
+</html>
