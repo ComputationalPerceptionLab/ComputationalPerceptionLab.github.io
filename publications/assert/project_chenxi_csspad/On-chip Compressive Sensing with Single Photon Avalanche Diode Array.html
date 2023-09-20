@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- saved from url=(0104)http://localhost:63342/Page_CSSPAD/CSSPAD.html?_ijt=h35n5ldnabha2p8lv4ci42bo8d&_ij_reload=RELOAD_ON_SAVE -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="viewport" content="width=800pix, initial-scale=1">
+<style type="text/css">
+table.one {table-layout: fixed}
+div {width:50%}
+.papertitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 30px; font-weight: bold; color: #0066CC; }
+.conferencetitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 20px; font-weight: bold }
+.auther{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.sectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 24px; font-weight: bold; color: #0066CC;}
+.secsectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 21px;  color: #46A3FF;}
+.body{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.Bibtex{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;margin:2px;}
+li{FONT-FAMILY: "Trebuchet MS"; margin:10px 0px;}
+</style>
+<title>On-chip Compressive Sensing with Single Photon Avalanche Diode Array</title>
+</head>
+
+<body>
+<hr align="center" width="900">
+<table class="one" cellpadding="0" cellspacing="5%" align="center" width="900" id="researcsh">
+	<tbody><tr>
+		<td width="100%">
+			<p class="papertitle" align="center">On-chip Compressive Sensing with Single Photon Avalanche Diode Array</p>
+			<p class="conferencetitle" align="center">Sensors 2023</p>
+			<p class="auther" align="center">Chenxi Qiu*, Peng Wang*, Xiangshun Kong, Feng Yan, Cheng Mao,
+				<a href="https://computationalperceptionlab.github.io/member/assert/Yuetao/index.html">Tao Yue</a>,
+				<a href="https://computationalperceptionlab.github.io/member/assert/Huxuemei/index.html">Xuemei Hu</a> </p>
+			<p class="auther" align="center"> chenxiqiu@smail.nju.edu.cn, xuemeihu@nju.edu.cn, yuetao@nju.edu.cn</p>
+			<p align="center"><img src="./On-chip Compressive Sensing with Single Photon Avalanche Diode Array_files/introduction_pipeline.png" align="center" width="600"></p>
+			<!--
+		<p class="auther" align="center">National Laboratory of Solid-StateMicrostructures and Collaborative Innovation Center of AdvancedMicrostructures, Nanjing University</p>
+		<p class="auther" align="center">College of Engineering and Applied Sciences and Jiangsu Key Laboratory of Artificial Functional Materials, Nanjing University</p>
+		<p class="auther" align="center">School of Electronic Science and Engineering, Nanjing University</p>
+		<p class="auther" align="center">Physical Measurement Laboratory, National Institute of Standards and Technology</p>
+		<p class="auther" align="center">Maryland NanoCenter, University of Maryland</p>
+		<p class="auther" align="center">School of Optical and Electronic Information, Wuhan National Laboratory for Optoelectronics, Huazhong University of Science and Technology</p>
+		<p class="auther" align="center">These authors* contributed equally</p>
+		-->
+		</td>
+	</tr>
+</tbody></table>
+
+<hr align="center" width="900">
+<table align="center" width="900">
+<tbody><tr align="center" width="900">
+<td align="center" width="900">
+<br>
+<p class="sectitle" align="left">Abstract</p>
+<p class="body" align="justify">Single-photon avalanche diodes (SPADs) are novel image sensors that record photons at
+extremely high sensitivity. To reduce both the required sensor area for readout circuits and the data
+throughput for SPAD array, in this paper, we propose a snapshot compressive sensing single-photon
+avalanche diode (CS-SPAD) sensor which can realize on-chip snapshot-type spatial compressive
+imaging in a compact form. Taking advantage of the digital counting nature of SPAD sensing,
+we propose to design the circuit connection between the sensing unit and the readout electronics
+for compressive sensing. To process the compressively sensed data, we propose a convolution
+neural-network-based algorithm dubbed CSSPAD-Net which could realize both high-fidelity scene
+reconstruction and classification. To demonstrate our method, we design and fabricate a CS-SPAD
+sensor chip, build a prototype imaging system, and demonstrate the proposed on-chip snapshot
+compressive sensing method on the MINIST dataset and real handwritten digital images, with both
+qualitative and quantitative results.</p>
+</td>
+</tr>
+
+
+<tr align="center" width="900">
+<td align="center" width="900">
+<br>
+<p class="sectitle" align="left">Method</p>
+<!--<p class="secsectitle" align = "left">Schematic diagram</p>-->
+<p class="body" align="justify"> In order to realize efficient SPAD array sensing, we design a novel compressive sensing SPAD array which can directly record the compressively sensed data. In the decoding
+process, we propose a neural network designed to directly process the compressively sensed data, which can reconstruct the scene and realize classification.</p>
+<!--<img src=".\source\2.png" align = "center" width = "550" >-->
+<!-- <p class="body" align = "center">Figure 1. Schematic diagram of the working principle of the system with metalens array achieving spin-dependent bifocal light-field imaging.</p> -->
+
+<p class="secsectitle" align="left">Snapshot Compressed Imaging Chip</p>
+<p class="body" align="justify"> We propose to implement compressive sensing in a block-wise way.
+	The basic compressed coding unit directly records the readout of the sensor after exposure by linking readout electronics (with memory) to each pixel,
+	as shown in Figure 1(a)-(b). , the connection settings within each block of pixels are shown in Figure 1(c)-(f). </p>
+<img src="./On-chip Compressive Sensing with Single Photon Avalanche Diode Array_files/methods_CompressedSensing.png" align="center" width="900">
+ <p class="body" align="center">Figure 1. (a) Classic sensor array (b), basic compressed sensing imaging unit of CS-SPAD, (c)-(f) four different CS connection settings.</p>
+
+<p class="secsectitle" align="left"> Information Processing Architecture Based on Convolution Neural Network</p>
+<p class="body" align="justify">We propose CSSPAD-Net to realize multi-task processing upon the compressed
+	measurements from our chip, realizing both image reconstruction and classification.
+	The proposed CSSPAD-Net includes a reconstruction branch and a classification branch,
+	and the features of the reconstruction branch are fused into the classification branch through the bringe operation.
+ </p>
+<img src="./On-chip Compressive Sensing with Single Photon Avalanche Diode Array_files/network.png" align="center" width="750">
+<p class="body" align="center">Figure 2. (a) Overview of CSSPAD-Net, (b) the structure of residual block (Resblock), (c) the structure
+of residual dense block (RDB).</p>
+</td>
+</tr>
+
+
+<tr align="center" width="900">
+<td align="center" width="900">
+<br>
+<p class="sectitle" align="left">Experiments</p>
+<p class="secsectitle" align="left">CS-SPAD Sensor Chip</p>
+<p class="body" align="justify">We designed a 32 × 32 CS-SPAD sensor chip to realize on-chip snapshot-type spatial compressive imaging.
+	The system mainly includes three parts: a 32 × 32 SPAD detector array, readout circuits, and address decoding circuits.
+The 32 × 32 SPAD detector circuit includes the SPAD detector, the corresponding gating
+quenching circuit, and the logic circuit required for compressive sensing.
+ </p>
+<img src="./On-chip Compressive Sensing with Single Photon Avalanche Diode Array_files/Chip_Tech.png" align="center" width="700"><br>
+<p class="body" align="center">Figure 3. (a) CS SPAD chip overview, (b) the diagram of CS-SPAD sensor chip design, (c) single
+pixel layout.</p>
+
+<p class="secsectitle" align="left">Optical System</p>
+<p class="body" align="justify">We build a prototype imaging system based on the proposed CS-SPAD sensor.
+	From left to right are the target scene, the lens used for focusing, the CS-SPAD sensor, and the host computer for controlling the automatic execution of the system.
+ </p>
+<img src="./On-chip Compressive Sensing with Single Photon Avalanche Diode Array_files/experiments_systems.png" align="center" width="500">
+<p class="body" align="center">Figure 4. (a) Overview of the prototype imaging system, (b) the detail of camera lens and CS SPAD
+chip, (c) the detail of peripheral circuits.</p>
+
+<p class="secsectitle" align="left">Simulation Results</p>
+<p class="body" align="justify">For quantitative evaluation, with the <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a> test dataset, we display the images on the screen,
+capture the compressed data with the CS-SPAD sensor, reconstruct the image with the
+CSSPAD-Net, and calculate the reconstruction metrics with the reconstructed image and
+the corresponding projected image.
+ </p>
+<img src="./On-chip Compressive Sensing with Single Photon Avalanche Diode Array_files/reconstructed results.png" align="center" width="500">
+<p class="body" align="center">Figure 5. Reconstructed results by CSSPAD-Net.
+</p>
+
+<p class="secsectitle" align="left">Real Handwritten Data Experiment</p>
+<p class="body" align="justify">Furthermore, as shown in Figure 6, we handwrite more digits, not from MNIST, for
+verification of our entire system. We use the same model trained on the MNIST dataset to
+classify and reconstruct the real handwritten digits. The visual display of the reconstructed
+results are shown in Figure 7, as shown, our methods could realize elegant reconstruction
+with the compressed results captured by the CS-SPAD sensor.
+
+ </p>
+<img src="./On-chip Compressive Sensing with Single Photon Avalanche Diode Array_files/handWritten.png" align="center" width="500">
+<p class="body" align="center">Figure 6. Example of real handwritten digits.
+</p>
+ <p></p>
+<img src="./On-chip Compressive Sensing with Single Photon Avalanche Diode Array_files/RealHandWriteRes.png" align="center" width="500">
+<p class="body" align="center">Figure 7. Real handwritten digits: reconstructed results.
+</p>
+
+</td>
+</tr>
+
+
+<tr width="700">
+<td width="900">
+<br>
+<p class="sectitle" align="left">More Details</p>
+
+<ul>
+	<li>File</li>
+		<ul>
+			<li><a href="https://www.mdpi.com/1424-8220/23/9/4417">Paper</a></li>
+		</ul>
+	<br>
+	<!--<li>Available source code: <a href="">Coming Soon.</a></li> -->
+</ul>
+
+
+</td></tr><tr align="left" width="900">
+<td align="left" width="900">
+<br>
+<p class="sectitle" align="left">Bibtex</p>
+<p class="Bibtex">@article{qiu2023chip,</p>
+<p class="Bibtex">title={On-Chip Compressive Sensing with a Single-Photon Avalanche Diode Array},</p>
+<p class="Bibtex">author={Qiu, Chenxi and Wang, Peng and Kong, Xiangshun and Yan, Feng and Mao, Cheng and Yue, Tao and Hu, Xuemei},</p>
+<p class="Bibtex">journal={Sensors},</p>
+<p class="Bibtex">volume={23},</p>
+<p class="Bibtex">number={9},</p>
+<p class="Bibtex">pages={4417},</p>
+<p class="Bibtex">year={2023},</p>
+<p class="Bibtex">publisher={MDPI},</p>
+<p class="Bibtex">url={https://www.mdpi.com/1424-8220/23/9/4417}</p>
+<p class="Bibtex">}</p>
+<br>
+</td>
+</tr>
+
+</tbody></table>
+
+
+<script>
+(function() {
+  var ws = new WebSocket('ws://' + window.location.host + '/jb-server-page?reloadServiceClientId=103');
+  ws.onmessage = function (msg) {
+      if (msg.data === 'reload') {
+          window.location.reload();
+      }
+      if (msg.data.startsWith('update-css ')) {
+          var messageId = msg.data.substring(11);
+          var links = document.getElementsByTagName('link');
+          for (var i = 0; i < links.length; i++) {
+              var link = links[i];
+              if (link.rel !== 'stylesheet') continue;
+              var clonedLink = link.cloneNode(true);
+              var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+              if (newHref !== link.href) {
+                clonedLink.href = newHref;
+              }
+              else {
+                var indexOfQuest = newHref.indexOf('?');
+                if (indexOfQuest >= 0) {
+                  // to support ?foo#hash 
+                  clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' + 
+                                    newHref.substring(indexOfQuest + 1);
+                }
+                else {
+                  clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                }
+              }
+              link.replaceWith(clonedLink);
+          }
+      }
+  };
+})();
+</script></body></html>
