@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=800pix, initial-scale=1" />
+<style type="text/css">
+table.one {table-layout: fixed}
+div {width:50%}
+.papertitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 30px; font-weight: bold; color: #0066CC; }
+.conferencetitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 20px; font-weight: bold }
+.auther{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.sectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 24px; font-weight: bold; color: #0066CC;}
+.secsectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 21px;  color: #46A3FF;}
+.body{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.Bibtex{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;margin:2px;}
+li{FONT-FAMILY: "Trebuchet MS"; margin:10px 0px;}
+</style>
+<title>Disordered metasurface enabled single-shot full-Stokes polarization imaging leveraging weak dichroism</title>
+
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript"
+	src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+
+<body>
+<hr align = "center" width = "900" />
+<table class="one" cellpadding="0"  cellspacing = "5%" align="center" width="900" id="researcsh">
+	<tr>
+		<td width="100%">
+			<p class="papertitle" align="center">Disordered metasurface enabled single-shot full-Stokes polarization imaging leveraging weak dichroism</p>
+			<p class="conferencetitle" align="center">Nature communication 2023</p>
+			<p class="auther" align="center">Qingbin Fan*, <a href="https://github.com/XuWeizhu">Weizhu Xu*</a>, <a href="https://computationalperceptionlab.github.io/member/assert/Huxuemei/index.html">Xuemei Hu*</a>, Wenqi Zhu*, 
+				<a href="https://computationalperceptionlab.github.io/member/assert/Yuetao/index.html">Tao Yue</a>, Feng Yan, Peicheng Lin, Lu Chen, Junyeob Song, Henri J. Lezec, Amit Agrawal, Yanqing Lu, Ting Xu</p>
+			<p class="auther" align="center"> weizhuxunju@smail.nju.edu.cn, xuemeihu@nju.edu.cn, yuetao@nju.edu.cn, xuting@nju.edu.cn</p>
+			<p align="center"><video src=".\source\movie.mov" controls align = "center" width = "400" autoplay loop></video></p>
+			<!--
+		<p class="auther" align="center">National Laboratory of Solid-StateMicrostructures and Collaborative Innovation Center of AdvancedMicrostructures, Nanjing University</p>
+		<p class="auther" align="center">College of Engineering and Applied Sciences and Jiangsu Key Laboratory of Artificial Functional Materials, Nanjing University</p>
+		<p class="auther" align="center">School of Electronic Science and Engineering, Nanjing University</p>
+		<p class="auther" align="center">Physical Measurement Laboratory, National Institute of Standards and Technology</p>
+		<p class="auther" align="center">Maryland NanoCenter, University of Maryland</p>
+		<p class="auther" align="center">School of Optical and Electronic Information, Wuhan National Laboratory for Optoelectronics, Huazhong University of Science and Technology</p>
+		<p class="auther" align="center">These authors* contributed equally</p>
+		-->
+		</td>
+	</tr>
+</table>
+
+<hr align = "center" width = "900" />
+<table align = "center" width = "900">
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Abstract</p>
+<p class="body" align = "justify">Polarization, one of the fundamental properties of light, is critical for certain
+	imaging applications because it captures information from the scene that
+	cannot directly be recorded by traditional intensity cameras. Currently,
+	mainstream approaches for polarization imaging rely on strong dichroism of
+	birefringent crystals or artificially fabricated structures that exhibit a high
+	diattenuation typically exceeding 99%, which corresponds to a polarization
+	extinction ratio (PER) >~100. This not only limits the transmission efficiency of
+	light, but also makes them either offer narrow operational bandwidth or be
+	non-responsive to the circular polarization. Here, we demonstrate a singleshot
+	full-Stokes polarization camera incorporating a disordered metasurface
+	array with weak dichroism. The diattenuation of the metasurface array is ~65%,
+	which corresponds to a PER of ~2. Within the framework of compressed sensing,
+	the proposed disordered metasurface array serves as an efficient sensing
+	matrix. By incorporating a mask-aware reconstruction algorithm, the signal
+	can be accurately recovered with a high probability. In our experiments, the
+	proposed approach exhibits high-accuracy full-Stokes polarimetry and highresolution
+	real-time polarization imaging. Our demonstration highlights the
+	potential of combining meta-optics with reconstruction algorithms as a promising
+	approach for advanced imaging applications.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Method</p>
+<p class="secsectitle" align = "left">Operational principle</p>
+<p class="body" align = "justify"> The operational principle of the nanophotonic polarization camera
+	consists of three steps: calibration, capture, and reconstruction. (a). Schematic of
+	the calibration process. 1.denotes a narrowband spectral filter. 2.denotes an
+	imaging lens. (b). The responsivity matrix $R$ of the whole meta-device is calibrated
+	from the photoresponses to the three pairs of orthogonal SoPs of incident light.
+	(c). Schematic of the capture process. Scattered optical waves at each position $(x, y)$
+	of target scene represented an unknown SoP $S = [S0,S1,S2,S3]^T$, illuminates the
+	imaging system. (d). A single-shot capture process generates the polarizationencoded
+	image $I$. (e). Mathematical description of the relation between $S_v$, $I_v$, and $Λ$.
+	(f). SoP reconstruction by the convolutional neural network. (g). Reconstructed SoP and
+	corresponding position on Poincaré sphere.</p>
+<img src=".\source\1.png" align = "center" width = "900" >
+<!-- <p class="body" align = "center">Figure 1. Schematic diagram of the working principle of the system with metalens array achieving spin-dependent bifocal light-field imaging.</p> -->
+
+
+<p class="secsectitle" align = "left">Network architecture:</p>
+<p class="body" align = "justify"> The framework of the reconstruction algorithm. The
+	reconstruction process is divided into two steps, the polarization data generator and the full
+	convolutional neural network. $Σ∗$ represents the forward imaging process, i.e., the label
+	(or the target full-Stokes polarization image) first point-wise multiplies the polarization
+	transmission matrix $M$, then integrates over the polarization dimension. The interference
+	$𝐼_{𝑛1}$ corresponds to the noise in image system and the interference $𝐼_{𝑛2}$ is used to simulate
+	the calibration errors in transmission matrix $M$. Through adding these interferences during
+	the training process, the trained neural network could be robust to noise interferences
+	existed in the imaging process. </p>
+<img src=".\source\2.png" align = "center" width = "700" >
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Experiments</p>
+
+<p class="secsectitle" align = "left">Optical setup</p>
+<p class="body" align = "justify">(a) The optical setup for the polarimetric measurements. The red
+	box is the LED light source and the integrating sphere. The uniform LED light is emitted
+	from the integrating sphere and then enters the system through the linear polarizer, color
+	filter and retarder successively. By rotating the angle of the polarizer and retarder, arbitrary
+	SoP can be generated. The inset shows the disordered metasurface array (shown in orange
+	box). (b-c) In our experiment, we selected a $16\times16$ subarray located in the upper-left
+	region of the device to conduct the polarization measurement.
+ </p>
+<img src=".\source\3.png" align = "center" width = "600" ><br />
+
+
+<p class="secsectitle" align = "left">Results on azimuth and DoP</p>
+<p class="body" align = "justify">Full-Stokes polarization imaging. Indoor (a–c) and outdoor (d) photography
+	with the proposed metasurface camera. In each case, the raw exposure
+	(corresponding to the polarization-encoded image, or called compressed image),
+	$S_0$ (corresponding to the monochrome intensity image), the azimuth of the
+	polarization ellipse and the degree of polarization are shown.
+ </p>
+<img src=".\source\4.png" align = "center" width = "600" >
+
+<p class="secsectitle" align = "left">Results on $S_3$</p>
+<p class="body" align = "justify">Polarization imaging of $S_3$. In each example, raw sensor acquisition, $S_0$, $S_3$
+	and DoP are shown. (a) Biological specimen. (b) 3D glasses consist of opposite circular
+	polarization filters. (c) A rectangle acrylic piece is not stressed by the clampsqueezing
+	and displays no stress-induced birefringence in the $S_3$ image. (d) The
+	rectangle acrylic piece is stressed by clamp-squeezing and displays stress-induced
+	birefringence in the $S_3$ image.
+ </p>
+<img src=".\source\5.png" align = "center" width = "600" >
+
+<p class="secsectitle" align = "left">Results at different wavelengths</p>
+<p class="body" align = "justify">Polarization imaging at different wavelengths in the visible
+	spectrum. Linear (a) and circular (b) polarization imaging with the proposed camera. The
+	raw unprocessed exposure, $S_0$ (corresponding to the traditional monochrome intensity
+	image), the azimuth of the polarization ellipse, and $S_3$ are shown. Illumination was
+	provided by LED which passes through a 10 nm bandpass filter.
+ </p>
+<img src=".\source\6.png" align = "center" width = "900" >
+
+<p class="secsectitle" align = "left">Results on $S_0$</p>
+<p class="body" align = "justify">The reconstructed intensity image $S_0$ of the pixel-level scene. The car plate is scaled into the red box. The numbers on car plate are only one or
+	two meta-pixels in width and can still be reconstructed clearly.
+ </p>
+<img src=".\source\7.png" align = "center" width = "600" >
+
+</td>
+</tr>
+
+
+<tr  width = "900">
+<td  width = "900">
+<br />
+<p class="sectitle" align = "left">More Details</p>
+<ul>
+	<li>File</li>
+		<ul>
+			<li><a href="https://www.nature.com/articles/s41467-023-42944-6">Paper</a></li>
+			<li><a href="https://www.nature.com/articles/s41467-023-42944-6#Sec11">Supplemental material</a></li>
+			<li><a href="https://github.com/ComputationalPerceptionLab/Disordered_full_Stokes_polarization_imaging">Code</a></li>
+		</ul>
+	<br />
+	<!--<li>Available source code: <a href="">Coming Soon.</a></li> -->
+</ul>
+
+
+<tr align = "left" width = "900">
+<td align = "left" width = "900">
+<br />
+<p class="sectitle" align = "left">Bibtex</p>
+<p class="Bibtex">@article{Fan2023DisorderedME,</p>
+<p class="Bibtex">title={Disordered metasurface enabled single-shot full-Stokes polarization imaging leveraging weak dichroism},</p>
+<p class="Bibtex">author={Qingbin Fan and Weizhu Xu and Xuemei Hu and Wenqi Zhu and Tao Yue and Feng Yan and Peicheng Lin and Lu Chen and Junyeob Song and Henri J. Lezec and Amit Agrawal and Yan-qing Lu and Ting Xu},</p>
+<p class="Bibtex">journal={Nature Communications},</p>
+<p class="Bibtex">year={2023},</p>
+<p class="Bibtex">volume={14},</p>
+<p class="Bibtex">url={https://www.nature.com/articles/s41467-023-42944-6}</p>
+<p class="Bibtex">}
+</p>
+<br />
+</td>
+</tr>
+
+</table>
+</body>
+</html>
