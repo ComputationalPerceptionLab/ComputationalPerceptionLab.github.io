@@ -1,0 +1,149 @@
+<using UTF-8>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=800pix, initial-scale=1" />
+<style type="text/css">
+table.one {table-layout: fixed}
+div {width:50%}
+.papertitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 30px; font-weight: bold; color: #0066CC; }
+.conferencetitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 20px; font-weight: bold }
+.auther{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.sectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 24px; font-weight: bold; color: #0066CC;}
+.secsectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 21px;  color: #46A3FF;}
+.body{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.Bibtex{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;margin:2px;}
+li{FONT-FAMILY: "Trebuchet MS"; margin:10px 0px;}
+</style>
+<title>Trilobite-inspired neural nanophotonic light-field camera with extreme depth-of-field</title>
+</head>
+
+<body>
+<hr align = "center" width = "900" />
+<table class="one" cellpadding="0"  cellspacing = "5%" align="center" width="900" id="researcsh">
+	<tr>
+		<td width="100%">
+			<p class="papertitle" align="center">An Efficient Way for Active None-line-of-sight: End-to-end Learned Compressed NLOS Imaging</p>
+			<p class="conferencetitle" align="center">PRCV 2023</p>
+			<p class="auther" align="center">Chen Chang, Tao Yue, Siqi Ni and Xuemei Hu*</p>
+			<p class="auther" align="center"> * xuemeihu@nju.edu.cn</p>
+			<p align="center"><img src="图1.png" align = "center" width = "700" ></p>
+			<!--
+		<p class="auther" align="center">National Laboratory of Solid-StateMicrostructures and Collaborative Innovation Center of AdvancedMicrostructures, Nanjing University</p>
+		<p class="auther" align="center">College of Engineering and Applied Sciences and Jiangsu Key Laboratory of Artificial Functional Materials, Nanjing University</p>
+		<p class="auther" align="center">School of Electronic Science and Engineering, Nanjing University</p>
+		<p class="auther" align="center">Physical Measurement Laboratory, National Institute of Standards and Technology</p>
+		<p class="auther" align="center">Maryland NanoCenter, University of Maryland</p>
+		<p class="auther" align="center">School of Optical and Electronic Information, Wuhan National Laboratory for Optoelectronics, Huazhong University of Science and Technology</p>
+		<p class="auther" align="center">These authors* contributed equally</p>
+		-->
+	  </td>
+	</tr>
+</table>
+
+<hr align = "center" width = "900" />
+<table align = "center" width = "900">
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Abstract</p>
+<p class="body" align = "justify">Non-line-of-sight imaging (NLOS) is an emerging detection technique that uses multiple reflections of a transmitted beam, capturing scenes beyond the user's field of view. Due to its high reconstruction quality, active transient NLOS imaging has been widely investigated. However, much of the existing work has focused on optimizing reconstruction algorithms but neglected the time cost during data acquisition. Conventional imaging systems use me-chanical point-by-point scanning, which requires high time cost and not uti-lizing the sparsity of the NLOS objects. In this paper, we propose to realize NLOS in an efficient way, based upon the theory of compressive sensing (CS). To reduce data volume and acquisition time, we introduce the end-to-end CS imaging to learn an optimal CS measurement matrix for efficient NLOS imaging. Through quantitative and qualitative experimental compari-son with SOTA methods, we demonstrate an improvement of at least 1.4 dB higher PSNR for the reconstructed depth map compared to using partial Hadamard sensing matrices. This work will effectively advance the real-time and practicality of NLOS.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Method</p>
+<p class="secsectitle" align = "left">Forward Model Combined with Compressed Sensing</p>
+<p class="body" align="justify"> The transient data is sparse both spatially and temporally, making it possible to reduce mask numbers for compression. We assume that after the laser illuminates a point on the wall, DMD is used to collect photons returned from all points within the detection area. Let the set of illumination points be L and the detection area be D. For illumination point  and measurement point , transient histogram of the whole detection area can be expressed as:</p>
+<img src="前向模型.png" align = "center" width = "400" >
+<p class="body" align="justify"> Let M be the set of masks that DMD displays, containing m masks with a spatial resolution of w×w. DMD scrolls through these masks to obtain m 1D histograms, assembled in width to form modulated photon transient data. To reduce acquisition time and the number of scanned points, while maintaining a uniform distribution of returned photon signals, illumination point l is located in the center of the detection area. Thus, the improvements to the original forward model have changed acquisition method from w×w mechanical scans to the current m electronic displays, significantly reducing the acquisition time.</p>	
+<table width="600" height="200" border="0">
+  <tr>
+    <td width="200"><img src="图2.jpg" width="500" height="358" alt="p1" /></td>
+    <td></td>
+    <td width="200"><img src="图2（b）.jpg" width="500" height="278" alt="p2" /></td>
+  </tr>
+</table>
+<p class="body" align="center"> Fig.1 Transient data and the process of compression.</p>	
+<!-- <p class="body" align = "center">Figure 1. Schematic diagram of the working principle of the system with metalens array achieving spin-dependent bifocal light-field imaging.</p> -->
+<p class="secsectitle" align = "left">Network architecture:</p>
+<p class="body" align = "justify"> To reconstruct hidden objects from compressed data, we build an end-to-end neural network (CSUNET) consisting of a decompressor, an encoder and a decoder, where the decompressor serves to recover the compressed data to full size, the encoder serves to extract space-time features from the recovered transient data, and the decoder reconstruct the final depth map based on these extracted features. To optimize the CS measurement for NLOS imaging, a learnable CS module is introduced in the network, which automatically learns the optimal weights of CS masks for NLOS tasks based on the distribution of the training dataset. </p>
+<img src="图3.jpg" align = "center" width = "800" >
+<p class="body" align="center"> Fig.2 Network Architecture of the proposed method.</p>	
+<p class="secsectitle" align = "left">Dataset and Training Strategies</p>
+<p class="body" align = "justify">To test the proposed sampling model with CSUNET, we obtain the transient data and depth map corresponding to each sample using rendering code for single-point detection with appropriate scaling and spatial distribution based on ShapeNetCore. Then we add noise to transient data due to the significant amount of ambient noise included in actual imaging, as well as the presence of dark counts, time jitter, and detection probability caused by SPAD dead time.
+ </p>
+<p class="body" align = "justify">Due to the large data volume, it is impractical to use a few simple convolutional layers to extract spatiotemporal features, which leads to a large network size and makes it difficult to converge if trained directly from scratch. Thus, CSNET and UNET are trained separately first. After basic convergence, the learned parame-ters are used as initial weights for the overall network, keeping a lower learning rate to continue training. Normalization related to the distribution of transient data needs to be done when loading the dataset to facilitate convergence.
+ </p></td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Results and Discussion</p>
+<p class="secsectitle" align = "left">Reconstruction of the Proposed End-to-end Network</p>
+<p class="body" align = "justify">To evaluate our CS mask-learnable end-to-end network (L-CSUNET) for recon-structing hidden scenes using compressed data, we first test it on the generated dataset by randomly selecting different types of test samples and observing the reconstructed depth maps with their PSNR, SSIM and MSE metrics against ground truth (GT) at different CRs. To further validate the effectiveness of our network, we also report the mean values of reconstructed metrics for all samples in the test dataset in Table 1. There is no noticeable reduction in reconstruction quality when CR is reduced from 20% to 5%, and re-construction is still possible at only 1%, theoretically reducing sampling time significantly.
+ </p>
+<img src="图4.jpg" align = "center" width = "800" ><br />
+<p class="body" align="center"> Fig.3 Reconstructed depth maps with PSNR/SSIM/MSE metrics at different compression ratios.</p>	
+<p class="secsectitle" align = "left">Ablation Study</p>
+<p class="body" align = "justify">Existing reconstruction algorithms are commonly based on transient data ob-tained in confocal mode, whereas in our forward model, the illumination point l is always in the center of relay wall and the equivalent detection points p corresponding to DMD pixels do not coincide with l. Therefore, algorithms based on confocal mode cannot be used directly. We index the 3D albedo obtained by the above method in depth to obtain a depth map, which is compared with H-CSUNET and L-CSUNET. With conventional algo-rithms, we use TVAL3 to complete the process of recovering full-volume transient data from the compressed.</p>
+<p class="body" align = "justify">The depth map reconstruction of our proposed network is significantly better than the other methods at different compression ratios. Conventional methods have a small reconstruction depth range, which can only locate the foremost position of the side of the hidden object towards to relay wall roughly, causing deeper information almost lost completely. Moreover, the methods are sensitive to noise, the resulting depth maps contain a lot of scatter noise and object contours are blurred.</p>
+<img src="图5.jpg" align = "center" width = "800" >
+<p class="body" align="center"> Fig.4 (a) Depth map reconstruction based on different methods;(b) Histograms of a randomly selected point of the recovered transient data.</p>	
+<p class="secsectitle" align = "left">Big Noise&nbsp;</p>
+<p class="body" align = "justify">In this section, we observe the robustness to noise of L-CSUNET by increasing background noise BG at different levels, considering that dark counts are related to the quality of SPAD itself, which is generally assumed to be 3000 counts/s and does not vary with the external environment. In all previous experiments, BG is set to 3× 10 ^11 counts/s, here we consider three noise levels with BG set to 6× 10 ^11 , 1.5× 10 ^12 and 3× 10 ^12 counts/s. Fig. 5(a) shows reconstruction under each noise level, Fig. 5(b) shows the effect of different noise levels on a single-point transient histogram and gives the noise-free data for comparison, and Fig. 6(b-d) give the evolution of respective average metrics with compression ratios. Since our network is trained on the dataset containing noise, metrics of no-noise data will fluctuate compared to other noisy data. We see that even under very strong noise, L-CSUNET still performs well in reconstruction.
+ </p>
+<img src="图6.jpg" align = "center" width = "800" >
+<p class="body" align="center"> Fig.5 (a) Reconstruction under different noise levels; (b) Effect of noise on transient data.</p>	
+<p class="secsectitle" align = "left">Extremely Low CR</p>
+<p class="body" align = "justify">To further reduce acquisition time and explore the possibility of reconstruction at an extremely low CR, we reduce CR to 0.5% and 0.2%, which means recon-structing hidden scenes will be achieved with only 5 and 2 masks at a spatial resolution of 32 × 32. Fig. 3 shows their reconstruction results. The information needed for reconstruction can still be extracted by the network from transient data after extreme compression, which not only demonstrates the pow-er of our network in extracting spatiotemporal features but also shows that the sparsity of transient data can provide ample room for maneuvers to reduce acquisition time in real experiments.</p>
+<p class="body" align = "justify">To observe the changing trend of reconstruction performance with CR, we plot the average metric change graph of depth maps in Fig. 6(a), and find that the deterioration of reconstruction is accelerated starting from a CR of less than 5%, so for real acquisition, considering the possible errors and some uncertainty, CR should not be lower than 5% to ensure the validity of acquisition data.</p>
+<img src="图7.JPG" align = "center" width = "800" >
+<p class="body" align="center"> Fig.6 Average metric changes of depth maps. (a) with CR, (b-d) on different noise levels.</p>
+</td>
+</tr>
+
+
+<tr  width = "900">
+<td  width = "900">
+<br />
+<p class="sectitle" align = "left">More Details</p>
+
+<ul>
+	<li>File</li>
+		<ul>
+			<li><a href="https://link.springer.com/chapter/10.1007/978-981-99-8537-1_3">Paper</a></li>
+			<li><a href="https://link.springer.com/chapter/10.1007/978-981-99-8537-1_3#Sec18">Supplemental material</a></li>
+			<li><a href="https://github.com/ShinKai-C/NLOS">Code</a></li>
+		</ul>
+	<br />
+	<!--<li>Available source code: <a href="">Coming Soon.</a></li> -->
+</ul>
+
+
+<tr align = "left" width = "900">
+<td align = "left" width = "900">
+<br />
+<p class="sectitle" align = "left">Bibtex</p>
+<p class="Bibtex">@article{10.1007/978-981-99-8537-1_3,</p>
+<p class="Bibtex">author={Chang Chen and Yue Tao and Ni Siqi and Hu Xuemei},</p>
+<p class="Bibtex">title={An Efficient Way for Active None-Line-of-Sight: End-to-End Learned Compressed NLOS Imaging},</p>
+<p class="Bibtex">booktitle={Pattern Recognition and Computer Vision},</p>
+<p class="Bibtex">year={2024},</p>
+<p class="Bibtex">publisher={Springer Nature Singapore},</p>
+<p class="Bibtex">pages={28-40},</p>
+<p class="Bibtex">isbn={978-981-99-8537-1},</p>
+<p class="Bibtex">url={https://link.springer.com/chapter/10.1007/978-981-99-8537-1_3}</p>
+<p class="Bibtex">}</p>
+<br />
+</td>
+</tr>
+
+</table>
+</body>
+</html>
