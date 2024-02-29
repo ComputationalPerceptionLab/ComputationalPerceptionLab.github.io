@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=800pix, initial-scale=1" />
+<style type="text/css">
+table.one {table-layout: fixed}
+div {width:50%}
+.papertitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 30px; font-weight: bold; color: #0066CC; }
+.conferencetitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 20px; font-weight: bold }
+.auther{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.sectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 24px; font-weight: bold; color: #0066CC;}
+.secsectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 21px;  color: #46A3FF;}
+.body{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.Bibtex{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;margin:2px;}
+li{FONT-FAMILY: "Trebuchet MS"; margin:10px 0px;}
+</style>
+<title>Reconstruction-free Cascaded Adaptive Compressive Sensing</title>
+	<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+	<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+});
+</script>
+	</script type="text/x-mathjax-config"＞
+   MathJax.Hub.Config({
+   TeX: { equationNumbers: {
+   autoNumber: ["AMS"], useLabelIds: true}},
+   "HTML-CSS": { linebreaks: { automatic: true}},
+   SVG: { linebreaks: { automatic: true}}
+   });
+   </script>
+</head>
+
+<body>
+<hr align = "center" width = "900" />
+<table class="one" cellpadding="0"  cellspacing = "5%" align="center" width="900" id="researcsh">
+	<tr>
+		<td width="100%">
+			<p class="papertitle" align="center">Reconstruction-free Cascaded Adaptive Compressive Sensing</p>
+			<p class="conferencetitle" align="center">CVPR 2024</p>
+			<p class="auther" align="center">Chenxi Qiu,
+				<a href="https://computationalperceptionlab.github.io/member/assert/Yuetao/index.html">Tao Yue</a>,
+				<a href="https://computationalperceptionlab.github.io/member/assert/Huxuemei/index.html">Xuemei Hu</a> </p>
+			<p class="auther" align="center"> chenxiqiu@smail.nju.edu.cn, yuetao@nju.edu.cn, xuemeihu@nju.edu.cn</p>
+			<p align="center"><img src=".\imgs\out-of-loop scheme.PNG" align = "center" width = "600" >
+			<p class="body" align = "center">Figure 1. The scheme comparison of $n$-stage ACS frameworks,
+			(a) the existing ACS methods with $n$ times of reconstruction of $\boldsymbol{x}'_1$, $\boldsymbol{x}'_2$, ..., $\boldsymbol{x}'_n$ in the adaptive sampling loop, and (b) the proposed method which requires no reconstruction during the sampling loop. Only the final image reconstruction with all adaptive measurements, i.e., $\boldsymbol{y}_1$, $\boldsymbol{y}_2$, .., $\boldsymbol{y}_n$, is required. RA denotes the sampling rate allocation module and $\boldsymbol{\mathcal{N}}_i$ denotes the reconstruction at the $i$-th adaptive sampling stage..</p>
+		</td>
+	</tr>
+</table>
+
+<hr align = "center" width = "900" />
+<table align = "center" width = "900">
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Abstract</p>
+<p class="body" align = "justify">Scene-aware Adaptive Compressive Sensing (ACS) has constituted a persistent pursuit, holding substantial promise for the enhancement of Compressive Sensing (CS) performance.
+Cascaded ACS furnishes a proficient multi-stage framework for adaptively allocating the CS sampling based on previous CS measurements.
+However, reconstruction is commonly required for analyzing and steering the successive CS sampling, which bottlenecks the ACS speed and impedes the practical application in time-sensitive scenarios.
+Addressing this challenge, we propose a reconstruction-free cascaded ACS method, which requires NO reconstruction during the adaptive sampling process. A lightweight Score Network (ScoreNet) is proposed to directly determine the ACS allocation with previous CS measurements and a differentiable adaptive sampling module is proposed for end-to-end training.
+For image reconstruction, we propose a Multi-Grid Spatial-Attention Network (MGSANet) that could facilitate efficient multi-stage training and inferencing.
+By introducing the reconstruction-fidelity supervision outside the loop of the multi-stage sampling process, ACS can be efficiently optimized and achieve high imaging fidelity.
+The effectiveness of the proposed method is demonstrated with extensive quantitative and qualitative experiments, compared with the state-of-the-art CS algorithms.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Reconstruction-free cascaded ACS method</p>
+<!--<p class="secsectitle" align = "left">Schematic diagram</p>-->
+<p class="body" align = "justify"> We introduce a novel reconstruction-free cascaded Adaptive Compressive Sensing
+	(ACS) framework, which obviates the need for reconstruction at the adaptive sampling process.
+	A lightweight ScoreNet is proposed to allocate sampling rates based on the previous CS measurements
+	and a differentiable adaptive sampling module is designed for end-to-end training.
+    Furthermore, we propose a Multi-Grid Spatial-Attention Network (MGSANet) for efficient multi-stage training and reconstruction.
+    By incorporating reconstruction fidelity supervision outside the adaptive sampling loop,
+	we optimize ACS for high-quality imaging.</p>
+<!--<img src=".\source\2.png" align = "center" width = "550" >-->
+<!-- <p class="body" align = "center">Figure 1. Schematic diagram of the working principle of the system with metalens array achieving spin-dependent bifocal light-field imaging.</p> -->
+
+<p class="secsectitle" align = "left">Reconstruction-free cascaded ACS framework</p>
+<p class="body" align = "justify"> As shown in Figure 1, we propose a multi-stage framework for realizing reconstruction-free ACS.
+The overall ACS framework is composed of three main parts, including the multi-stage ACS backbone,
+	the forward adaptive sampling method, and the final image reconstruction with the input of all the ACS measurements.
+	Furthermore, the forward adaptive sampling method is composed of ScoreNet and an adaptive sampling module,
+	which first scores the previous measurements of each block and then implements the adaptive sampling based on the score. </p>
+<img src=".\imgs\overview.png" align = "center" width = "900" >
+ <p class="body" align = "center">Figure 2. The overview of the proposed reconstruction-free adaptive CS method,
+	 the multi-stage adaptive sampling can be conducted without reconstruction until the target CS sampling rate is achieved.
+	 (a) The multi-stage ACS sampling process, (b) the reconstruction process and the out-of-loop
+	 reconstruction-fidelity supervision during the training process, and (c) the structure of the ASM.</p>
+
+<p class="secsectitle" align = "left"> LP-based differentiable adaptive sampling </p>
+<p class="body" align = "justify">To realize adaptive sampling based on previous measurements, we propose two modules,
+	i.e., the lightweight ScoreNet module and the adaptive sampling module, which score each block with previous measurements
+	and implement adaptive sampling based on the score.
+	For the adaptive sampling module, we propose to decide the number of required measurement of the block and
+	select the first corresponding number of rows of the whole measurement matrix $\Phi_i \in \mathbb{R}^{T_i\times B^2}$ to
+	form the real measurement matrix of the block at stage $i$, as shown in Figure 2(c).
+	$T_i$ is a hyper-parameter constraining block measurement counts, ensuring the sampling rate does not exceed 1.
+	Specifically, we introduce a Score To Mask (STM) module to generate a binary selection mask $\boldsymbol{M}_i$ based on
+	${\boldsymbol s}_i$. The measurement of each image block is thus $\boldsymbol{y}_i^{a,b} =
+	\boldsymbol{M}_i^{a,b} \odot (\Phi_i\boldsymbol{x}^{a,b})$, where $\odot$ denotes the dot product.
+	Through introducing an auxiliary variable
+	\begin{equation}
+		\boldsymbol{\eta}_i = C\left[\boldsymbol{s}_i; \boldsymbol{s}_i-1/{m_i}; ...;\boldsymbol{s}_i-{(T_i-1)}/{m_i}\right ], \tag{1}
+	\label{equation1}
+	\end{equation}
+	where $C[\cdot]$ is the concatenate operation in the third dimension and
+	$\boldsymbol{\eta}_i \in \mathbb{R}^{\frac{H}{B}\times \frac{W}{B} \times T_i}$.
+	$m_i$ is the total number of measurements at stage $i$. For a given sampling rate $r_i$ of $i$-th sampling stage
+	and an image with $H\times W$ pixels, $m_i=H\times W\times r_i$.  We propose the STM module as
+	\begin{equation}
+	\boldsymbol{M}_i = \mathrm{Binarize}(\boldsymbol{\eta}_i - \tau_i), \tag{2}
+	\label{equation2}
+	\end{equation}
+	where $\tau_i$ is the $m_i$-th largest value in $\boldsymbol{\eta}_i$.
+	However, Equation \eqref{equation2} is non-differentiable. To address this issue,
+	we propose to construct an integer linear programming problem,
+	which can be differentiated with the perturbed optimizer. The constructed LP problem is
+	\begin{equation}
+	\begin{aligned}
+	\mathop{\mathrm{arg\; max}}\limits_{\boldsymbol{M}_i\in \mathcal{C}}\langle\boldsymbol{M}_i, &\boldsymbol{\eta}_i\rangle, \\
+	s.t.\;\mathcal{C}=\{ \boldsymbol{M}_i \in \{0,1\}^{\frac{H}{B}\times \frac{W}{B}\times T_i}: & \sum_{a,b,t} \boldsymbol{M}_i^{a,b,t} = m_i, \\
+	M_i^{a,b,t} \geq M_i^{a,b,t+1}, &\forall t\in \{1,...,T_i-1\} \},
+	\label{eq: STM_in_LP_form}
+	\end{aligned}
+	\tag{3}
+	\end{equation}
+	where $t$ indexes the third dimension of $\boldsymbol{M}_i$. $\mathcal{C}$ is the convex polytope set that meets two conditions.
+	The first condition constrains the total number of selected measurements to be $m_i$, and the second condition denotes
+	that we select the first several rows of the sampling matrix $\Phi_i$. In the training process,
+	the forward and backward propagation of the LP-based differentiable STM are defined below.
+	\paragraph{Forward propagation:}
+\begin{equation}
+\begin{aligned}
+\overline{\boldsymbol{M}_i} &= \mathbb{E}_Z \left [ \mathop{\mathrm{arg\; max}}\limits_{\boldsymbol{M}_i\in \mathcal{C}}\langle\boldsymbol{M}_i, \boldsymbol{\eta}_i+ \sigma \boldsymbol{Z}\rangle \right ], \\
+& = \sum \limits_{q=1}^{Q}\left [ {\rm STM}(\boldsymbol{\eta}_i+ \sigma \boldsymbol{Z}_q)\right ], \\
+\end{aligned}
+	\tag{4}
+\end{equation}
+where $Q$ different uniform Gaussian noise $\boldsymbol{Z}_q$ is added to perturb the input $\boldsymbol{\eta}_i$ and the output is the expectation of the output of the LP module. $\sigma$ and $Q$ are hyper-parameters.
+
+
+Backward propagation:
+The backpropagation can be achieved with the Jacobian matrix and the Jacobian of the above forward propagation can be calculated as
+\begin{equation}
+\begin{aligned}
+J_{\boldsymbol{s}}\boldsymbol{M}_i &= \mathbb{E}_Z \left [ \mathop{\mathrm{arg\; max}}\limits_{\boldsymbol{M}_i\in \mathcal{C}}\langle\boldsymbol{M}_i, \boldsymbol{\eta}_i + \sigma \boldsymbol{Z}\rangle \boldsymbol{Z}^T /\sigma \right ],\\
+&= \sum \limits_{q=1}^{Q} \left [ {\rm STM} \left (\boldsymbol{\eta}_i + \sigma \boldsymbol{Z}_q \right ) \boldsymbol{Z}_q^T /\sigma\right ].\\
+\end{aligned}
+	\tag{5}
+\end{equation}
+
+<p class="secsectitle" align = "left">MGSANet-based reconstruction network</p>
+<p class="body" align = "justify">For efficient training and inferencing, we propose a multi-grid spatial attention network,
+	as shown in Figure 3. Due to GPUs' parallel computing strength,
+	networks with greater parallelism achieve faster acceleration than less parallel models at the same FLOPs.
+	Consequently, we propose the integration of a multi-grid structure as the fundamental backbone of our architecture.
+	This structure facilitates the distribution of features across multiple branches, enabling parallel processing.
+ </p>
+<img src=".\imgs\ECS_Net.png" align = "center" width = "900" >
+<p class="body" align = "center">Figure 3. The overall structure of the proposed MGSANet. (a) The backbone of MGSANet,
+	(b) upsampling module, (c) downsampling module, (d) Dense Residual Block, (e) Residual Block, and (f) Spatial Attention module.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Experiments</p>
+<p class="secsectitle" align = "left">Quantitative results</p>
+<p class="body" align = "justify">We compare our proposed model with state-of-the-art (SOTA) CS methods proposed in recently years,
+	which includes AMP-Net, OPINE-Net$^+$, COAST, NL-CS, MADUN, CASNet, TransCS, FSOINet, CSFormer, TCS-Net and OCTUF$^+$.
+The quantitative comparison is summarized in Table 1, we can observe that our proposed model can outperform the SOTA CS methods at the sampling rates of 10%, 15%, 20% and 25%.
+ </p>
+<p class="body" align = "center">Table 3. Performance comparison with state-of-the-art CS algorithms on Set11 and Urban100 test sets.
+	The bold font is utilized to indicate the best results and the second-best results are marked with an underline.</p>
+<img src=".\imgs\compare_with_sota.png" align = "center" width = "800" ><br />
+
+<p class="secsectitle" align = "left">Visual results</p>
+<p class="body" align = "justify">Figure 4 shows the visual reconstruction results,
+	we can observe that the reconstruction results of our proposed method are closer to the ground truth and have clearer texture details.
+	In all, through comparison with the SOTA methods, we demonstrate the superiority of our proposed method both quantitatively and qualitatively.
+ </p>
+<img src=".\imgs\compare_sota_visual_Adap.png" align = "center" width = "900" >
+<p class="body" align = "center">Figure 4. Visual comparison with the state-of-the-art CS algorithms. Top row: Barbara from Set11
+	with sampling rate = 10%, bottom row: img_062 from Urban100 with sampling rate = 25%.</p>
+
+</td>
+</tr>
+
+
+<tr  width = "700">
+<td  width = "900">
+<br />
+<p class="sectitle" align = "left">More Details</p>
+
+<ul>
+	<li>File</li>
+		<ul>
+			<li><a href="XX">Paper: comming soon</a></li>
+		</ul>
+	<br />
+	<!--<li>Available source code: <a href="">Coming Soon.</a></li> -->
+</ul>
+
+
+</table>
+</body>
+</html>
