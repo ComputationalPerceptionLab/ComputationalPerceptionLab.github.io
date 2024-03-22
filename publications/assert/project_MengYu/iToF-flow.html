@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=800pix, initial-scale=1" />
+<style type="text/css">
+table.one {table-layout: fixed}
+div {width:50%}
+.papertitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 30px; font-weight: bold; color: #0066CC; }
+.conferencetitle {FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 20px; font-weight: bold }
+.auther{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.sectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 24px; font-weight: bold; color: #0066CC;}
+.secsectitle{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 21px;  color: #46A3FF;}
+.body{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;}
+.Bibtex{FONT-FAMILY: "Trebuchet MS"; FONT-SIZE: 16px;margin:2px;}
+li{FONT-FAMILY: "Trebuchet MS"; margin:10px 0px;}
+</style>
+<title>iToF-flow-based High Frame Rate Depth Imageing</title>
+</head>
+
+<body>
+<hr align = "center" width = "900" />
+<table class="one" cellpadding="0"  cellspacing = "5%" align="center" width="900" id="researcsh">
+	<tr>
+		<td width="100%">
+			<p class="papertitle" align="center">iToF-flow-based High Frame Rate Depth Imageing</p>
+			<p class="conferencetitle" align="center">CVPR 2024</p>
+			<p class="auther" align="center"> <a href="https://scholar.google.com/citations?hl=zh-CN&user=h5yYcO4AAAAJ">Yu Meng</a>, Zhou Xue, Xu Chang, <a href="https://computationalperceptionlab.github.io/member/assert/Huxuemei/index.html">Xuemei Hu</a>, <a href="https://computationalperceptionlab.github.io/member/assert/Yuetao/index.html">Tao Yue</a> </p>
+			<p class="auther" align="center"> School of Electronic Science and Engineering, Nanjing University </p>
+			<p align="center"><img src=".\source\1.png" align = "center" width = "600" ></p>
+			<!--
+		<p class="auther" align="center">National Laboratory of Solid-StateMicrostructures and Collaborative Innovation Center of AdvancedMicrostructures, Nanjing University</p>
+		<p class="auther" align="center">College of Engineering and Applied Sciences and Jiangsu Key Laboratory of Artificial Functional Materials, Nanjing University</p>
+		<p class="auther" align="center">School of Electronic Science and Engineering, Nanjing University</p>
+		<p class="auther" align="center">Physical Measurement Laboratory, National Institute of Standards and Technology</p>
+		<p class="auther" align="center">Maryland NanoCenter, University of Maryland</p>
+		<p class="auther" align="center">School of Optical and Electronic Information, Wuhan National Laboratory for Optoelectronics, Huazhong University of Science and Technology</p>
+		<p class="auther" align="center">These authors* contributed equally</p>
+		-->
+		</td>
+	</tr>
+</table>
+
+<hr align = "center" width = "900" />
+<table align = "center" width = "900">
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Abstract</p>
+<p class="body" align = "justify">iToF is a prevalent, cost-effective technology for 3D perception. While its reliance on multi-measurement commonly leads to reduced performance in dynamic environments. Based on the analysis of the physical iToF imaging process, we propose the iToF flow, composed of cross-mode transformation and uni-mode photometric correction, to model the variation of measurements caused by different measurement modes and 3D motion, respectively. We propose a local linear transform (LLT) based cross-mode transfer module (LCTM) for mode-varying and pixel shift compensation of cross-mode flow, and uni-mode photometric correct module (UPCM) for estimating the depth-wise motion caused photometric residual of uni-mode flow. The iToF flow-based depth extraction network is proposed which could facilitate the estimation of the 4-phase measurements at each individual time for high framerate and accurate depth estimation. Extensive experiments, including both simulation and real-world experiments,  are conducted to demonstrate the effectiveness of the proposed methods. Compared with the SOTA method, our approach reduces the computation time by 75% while improving the performance by 38%.</p>
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Method</p>
+<p class="secsectitle" align = "left">Overview</p>
+<p class="body" align = "justify"> Based on the analysis of the iToF imaging process, we propose iToF-flow to model the variation caused by the 3D motion and alternation of measurement mode, and develop an iToF-flow-based depth extraction neural network for high frame rate depth estimation. Specifically, from a physics-inspired perspective, we decompose the variation of iToF measurements into cross-mode flow, which models the photometric variation and pixel shift among different modes, and the uni-mode flow, which models the photometric residuals caused by depth-wise motion of the same mode. As for the cross-mode flow, we observe the motion-insensitive local linear transformation between different modes of the measurements and propose the LLT-based cross-mode transfer module (LCTM). As for uni-mode flow, we derive the depth-dependent photometric residual formulation and propose the uni-mode photometric compensation module (UPCM). With the end-to-end processing, the 3D motion is separated into the 2D plane of optical flow due to space shift and luminance residuals due to depth-wise motion, which can be extracted sequentially and separately.  </p>
+
+
+<p class="secsectitle" align = "left">Local Linear Transformation:</p>
+<p class="body" align = "justify">The challenging aspect of information propagation lies in accurately aligning the 2D motion flow between two modes at different times, known as cross-mode flow estimation. However, the photometric inconsistency introduced by the heterogeneous phase shift at different times degrades the performance of optical flow estimation methods. Thus we propose a motion-insensitive local linear transfer model that could formulate the mapping between different modes. Briefly, using LLT map we can generate photometrically consistent measurements at different moments for optical flow estimation. As shown in the figure below, the LLT robustness to motion edges is proven. Local area in (b), (c), (e) and (f) is marked with red box in (a). </p>
+<img src=".\source\3.png" align = "center" width = "500" >
+
+
+<p class="secsectitle" align = "left">Network Structure</p>
+<p class="body" align = "justify">We decompose the iToF flow depth estimation network into two modules: the cross-mode transfer and uni-mode photometric correction modules. Building upon these two modules, we propose the iToF flow-based depth estimation neural network that accurately estimates depth of each moment in an end-to-end manner by propagating absent phase information from previous measurements to the target time and correcting depth-wise motion-induced photometric-intensity-bias with the uni-mode flow. As shown in the figure below, framework of the proposed network is composed of cross-mode transfer module and uni-mode correction module including (b) submodule LMM of LCTM, (c) submodule SPE of LCTM and (d) UPCM.
+ </p>
+<img src=".\source\2.png" align = "center" width = "900" >
+
+</td>
+</tr>
+
+
+<tr align = "center" width = "900">
+<td align = "center" width = "900">
+<br />
+<p class="sectitle" align = "left">Experiments</p>
+<p class="secsectitle" align = "left">Visualization results for LLT</p>
+<p class="body" align = "justify"> As shown in the figure below,, the LMM-predicted linear mapping relationship between pixel intensities within the 16x16 sized region marked by the red box can all be formed by the slope k and intercept b from the center pixel.
+ </p>
+<img src=".\source\4.png" align = "center" width = "500" ><br />
+
+<p class="secsectitle" align = "left">Comparisons with State-of-the-Art Methods</p>
+<p class="body" align = "justify">The quantitative comparison results are shown below. Our method achieves the best performance in both photometric and depth reconstruction. Compared with the SOTA method FNN, the depth reconstruction error of our method is reduced by 37% and the runtime of our method is reduced to a quarter. 
+ </p>
+<img src=".\source\6.png" align = "center" width = "450" >
+<p class="body" align = "justify">The visualization comparison is shown below. 
+</p>
+<img src=".\source\5.png" align = "center" width = "950" >
+
+<p class="secsectitle" align = "left">Additional Ablation Experiments</p>
+<p class="body" style="text-align: left;">We add 3 more experiments to demonstrate the effectiveness of iToF-flow,
+	<ul style="text-align: left;">
+		<li>The standard depth estimation (<b>SDE</b>) with unaligned measurements</li>
+		<li>Replacing the LMM with Closed-Form LLT map (<b>CF-LLT</b>)</li>
+		<li>The results with a single LMM (<b>LMM-only</b>)</li>
+	</ul>
+	<img src=".\source\8.png" align = "center" width = "450" >
+    <p class="body" align = "justify">For fair comparison, all these methods are retraining. Note that computing the <b>CF-LLT</b> with Eq. 2 in our paper need to split the image into local patches, introducing additional hyper-parameters like patch sizes. Here, we test a series of patch sizes (e.g., 8, 12, 16, 20), and present the best result with patch size 16. As shown, the best selected CF-LLT achieves slightly worse results than proposed method. Besides, the CNN-based LLT map exhibits greater smoothness than the CF-LLT map as depicted. The <b>LMM-only</b> can map the cross-mode intensity effectively, getting comparable or even better performance than FFN with much lower computational cost. However, it can not fully utilize the cross-mode correlation of the 4-mode measurements. The arctan2 operator used in depth estimation could amplify the slight errors in the retrieved photometric images, presenting relative lower photometric error and higher depth error. </p>
+</p>
+
+<img src=".\source\7.png" align = "center" width = "550" >
+
+</td>
+</tr>
+
+
+<tr  width = "900">
+<td  width = "900">
+<br />
+<p class="sectitle" align = "left">More Details</p>
+
+<ul>
+	<li>File: All resources will be available following the publication.</li>
+		<ul>
+			<li><a href="https://computationalperceptionlab.github.io/publications/assert/XX">Paper: comming soon</a></li>
+			<li><a href="https://computationalperceptionlab.github.io/publications/assert/XX">Code: comming soon</a></li>
+			<li><a href="https://computationalperceptionlab.github.io/publications/assert/XX">Dataset: comming soon</a></li>
+		</ul>
+	<br />
+	<!--<li>Available source code: <a href="">Coming Soon.</a></li> -->
+</ul>
+
+
+<tr align = "left" width = "900">
+<td align = "left" width = "900">
+
+</td>
+</tr>
+
+</table>
+</body>
+</html>
