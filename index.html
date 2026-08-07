@@ -52,6 +52,164 @@
         var IsWeiXin = navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger';
 		window.ScriptCdn = "//cdn-hk.wds168.cn";
 	</script>
+	<style>
+		/* NEWS uses only one content column; let it occupy the full grid width. */
+		#module_375022039 .ModuleGridContainer375022039 {
+			width: 1200px !important;
+			max-width: calc(100% - 80px) !important;
+			margin-right: auto !important;
+			margin-left: auto !important;
+		}
+		#module_375022039 .ModuleGridCustomContainer {
+			height: auto !important;
+			min-height: 0 !important;
+		}
+		#module_375022039 #Sub375022039_1 {
+			position: relative !important;
+			top: auto !important;
+			left: auto !important;
+			width: 100% !important;
+			height: auto !important;
+		}
+		#module_375022039 #Sub375022039_1 > #module_375022041,
+		#module_375022039 #Sub375022039_1 .BodyCenter375022041,
+		#module_375022039 #Sub375022039_1 .plainTextGiant-Container {
+			width: 100% !important;
+			max-width: none !important;
+		}
+		#module_375022039 #Sub375022039_2,
+		#module_375022039 #Sub375022039_3,
+		#module_375022039 .SubPadding1,
+		#module_375022039 .SubPadding2 {
+			display: none !important;
+		}
+		#module_375022039 .ModuleImageTextContent > p:first-child {
+			margin: 0 0 24px;
+			font-size: 30px;
+			line-height: 1.2;
+		}
+		#module_375022039 .news-list {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr);
+			gap: 10px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			overflow-x: auto;
+		}
+		#module_375022039 .news-list li {
+			position: relative;
+			margin: 0;
+			padding: 0 0 0 18px;
+			font-size: 15px;
+			line-height: 1.55;
+			color: #333;
+			white-space: nowrap;
+		}
+		#module_375022039 .news-list li::before {
+			content: "—";
+			position: absolute;
+			left: 0;
+			color: #9aa3ad;
+		}
+		@media (max-width: 767px) {
+			#module_375022039 .ModuleGridContainer375022039 {
+				width: calc(100% - 32px) !important;
+			}
+			#module_375022039 .news-list {
+				grid-template-columns: 1fr;
+				gap: 10px;
+			}
+			#module_375022039 .ModuleImageTextContent > p:first-child {
+				font-size: 26px;
+			}
+		}
+
+		/* Keep the entire carousel aligned with the site's centered content grid. */
+		#module_375021701 {
+			width: 100% !important;
+			height: auto !important;
+			min-height: 0 !important;
+		}
+		#module_375021701 .BodyCenter375021701 {
+			width: 100vw !important;
+			max-width: none !important;
+			height: auto !important;
+			min-height: 0 !important;
+			position: relative !important;
+			left: 50% !important;
+			float: none !important;
+			transform: none !important;
+			margin-right: 0 !important;
+			margin-left: -50vw !important;
+			display: flex !important;
+			justify-content: center !important;
+		}
+		#module_375021701 .slidegiant-container {
+			width: 1200px !important;
+			max-width: calc(100vw - 80px) !important;
+			height: auto !important;
+			min-height: 0 !important;
+			position: relative !important;
+			left: auto !important;
+			float: none !important;
+			transform: none !important;
+			margin-right: 0 !important;
+			margin-left: 0 !important;
+		}
+		#module_375021701 .module-slide-container {
+			width: 100% !important;
+			max-width: none !important;
+			height: auto !important;
+			min-height: 0 !important;
+			position: relative !important;
+			left: auto !important;
+			float: none !important;
+			transform: none !important;
+			margin-right: 0 !important;
+			margin-left: 0 !important;
+		}
+		#module_375021701 .swiper-container {
+			width: 1200px !important;
+			max-width: calc(100vw - 80px) !important;
+			aspect-ratio: 2 / 1;
+			height: auto !important;
+			min-height: 0 !important;
+			flex: 0 0 auto !important;
+			margin-right: auto !important;
+			margin-left: auto !important;
+			overflow: hidden;
+			background: #f5f6f7;
+		}
+		#module_375021701 .swiper-wrapper,
+		#module_375021701 .swiper-slide,
+		#module_375021701 .swiper-slide > a {
+			width: 100% !important;
+			height: 100% !important;
+		}
+		#module_375021701 .swiper-slide > a {
+			display: block;
+		}
+		#module_375021701 .swiperImg {
+			display: block;
+			width: 100% !important;
+			height: 100% !important;
+			max-width: none !important;
+			object-fit: cover;
+			object-position: center;
+		}
+		@media (max-width: 767px) {
+			#module_375021701 .slidegiant-container {
+				max-width: calc(100vw - 32px) !important;
+			}
+			#module_375021701 .swiper-container {
+				width: calc(100vw - 32px) !important;
+				max-width: calc(100vw - 32px) !important;
+				aspect-ratio: 16 / 9;
+				height: auto !important;
+			}
+		}
+	</style>
 	<script src="static/js/PageJs.js"></script>
 	<script>
 		var delayTimes = 0;
@@ -534,37 +692,39 @@ addScript('/skinp/modules/ModuleNavGiant/menu.js',function(){
     <div class='BodyCenter BodyCenter375022041 clearfix'><div class="plainTextGiant-Container imageTextContainer clearfix" hasresponsive="1" hidewidth="500">
     <div class="ModulePlainTextGiantContent ModuleImageTextContent">
         <p><strong><a href="javascript:window.open('*');">NEWS</a></strong></p>
-		    <li>Our paper got accepted by IEEE TPAMI 2026.</li>
-			<li>Our paper got accepted by APL 2026.</li>
-			<li>Our paper got accepted by LPR 2026.</li>
-			<li>Our paper got accepted by IEEE TCSVT 2026.</li>
-			<li>Our paper got accepted by LPR 2026.</li>
-			<li>Our paper got accepted by IEEE TPAMI 2026.</li>
-			<li>Our paper got accepted by IEEE TCSVT 2026.</li>
-			<li>Our paper got accepted by IEEE CVPR 2026.</li>
-			<li>Our paper got accepted by IEEE SPL 2025.</li>
-			<li>Our AP paper earned ESI Highly Cited Paper (1%).</li>
-			<li>Our paper got accepted by NeurIPS (Spotlight) 2025.</li>
-			<li>Our paper got accepted by Inform. Fusion 2025.</li>
-			<li>Our NC paper earned ESI Hot Paper (0.1%).</li>
-	    	<li>Our papers got accepted by IEEE ICCP 2024.</li>
-	    	<li>Two of our papers got accepted by IEEE CVPR 2024.</li>
-	    	<li>Our paper was selected as Editor's Pick at APL.</li>
-	    	<li>Our paper got accepted by Appl. Phys. Lett. 2024.</li>
-	    	<li>Our paper was selected as the Cover of Adv. Photonics.</li>
-	    	<li>Our paper got accepted by IEEE TPAMI 2024.</li>
-	    	<li>Our paper got accepted by Adv. Photonics 2024.</li>
-	    	<li>Our Light paper got the ESI highly cited award (1%).</li>
-	    	<li>Our paper got accepted by Opt. Letters 2023.</li>
-	   	<li>Our paper got accepted by Nat. Commun. 2023.</li>
-	    	<li>Our paper got accepted by Optics Express 2023.</li>
-	    	<li>Our paper got accepted by PRCV 2023.</li>
-	    	<li>Our paper got accepted by IEEE ICCP 2023.</li>
-	    	<li>Our paper got accepted by Sensors 2023.</li>
-	    	<li>Our paper got accepted by IEEE TPAMI 2023.</li>
-	    	<li>Our paper got accepted by Light Sci. Appl. 2022.</li>
-	    	<li>Our paper got accepted by Nat. Commun. 2022.</li>
-	        <li>Our paper got accepted by IEEE CVPR 2022 (oral, 5%).</li>
+		<ul class="news-list">
+			<li>Our paper was accepted by IEEE Transactions on Pattern Analysis and Machine Intelligence, 2026.</li>
+			<li>Our paper was accepted by Applied Physics Letters, 2026.</li>
+			<li>Our paper was accepted by Laser &amp; Photonics Reviews, 2026.</li>
+			<li>Our paper was accepted by IEEE Transactions on Circuits and Systems for Video Technology, 2026.</li>
+			<li>Our paper was accepted by Laser &amp; Photonics Reviews, 2026.</li>
+			<li>Our paper was accepted by IEEE Transactions on Pattern Analysis and Machine Intelligence, 2026.</li>
+			<li>Our paper was accepted by IEEE Transactions on Circuits and Systems for Video Technology, 2026.</li>
+			<li>Our paper was accepted by the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2026.</li>
+			<li>Our paper was accepted by IEEE Signal Processing Letters, 2025.</li>
+			<li>Our Advanced Photonics paper was recognized as an ESI Highly Cited Paper (top 1%).</li>
+			<li>Our paper was accepted by Neural Information Processing Systems as a Spotlight paper, 2025.</li>
+			<li>Our paper was accepted by Information Fusion, 2025.</li>
+			<li>Our Nature Communications paper was recognized as an ESI Hot Paper (top 0.1%).</li>
+			<li>Our papers were accepted by the IEEE International Conference on Computational Photography, 2024.</li>
+			<li>Two of our papers were accepted by the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2024.</li>
+			<li>Our paper was selected as an Editor's Pick by Applied Physics Letters.</li>
+			<li>Our paper was accepted by Applied Physics Letters, 2024.</li>
+			<li>Our paper was selected for the cover of Advanced Photonics.</li>
+			<li>Our paper was accepted by IEEE Transactions on Pattern Analysis and Machine Intelligence, 2024.</li>
+			<li>Our paper was accepted by Advanced Photonics, 2024.</li>
+			<li>Our Light: Science &amp; Applications paper was recognized as an ESI Highly Cited Paper (top 1%).</li>
+			<li>Our paper was accepted by Optics Letters, 2023.</li>
+			<li>Our paper was accepted by Nature Communications, 2023.</li>
+			<li>Our paper was accepted by Optics Express, 2023.</li>
+			<li>Our paper was accepted by the Chinese Conference on Pattern Recognition and Computer Vision, 2023.</li>
+			<li>Our paper was accepted by the IEEE International Conference on Computational Photography, 2023.</li>
+			<li>Our paper was accepted by Sensors, 2023.</li>
+			<li>Our paper was accepted by IEEE Transactions on Pattern Analysis and Machine Intelligence, 2023.</li>
+			<li>Our paper was accepted by Light: Science &amp; Applications, 2022.</li>
+			<li>Our paper was accepted by Nature Communications, 2022.</li>
+			<li>Our paper was accepted by the IEEE/CVF Conference on Computer Vision and Pattern Recognition as an oral presentation (top 5%), 2022.</li>
+		</ul>
     </div>
 </div>
 <script>
